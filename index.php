@@ -20,9 +20,9 @@ include 'config/setup.php'
             <img src="img/logme.png" alt="login-logo" width="90px"/>Welcome
             <form method="POST" action="" id="sign_in">
             <div>Login</div>
-            <input class="input-header" type="text" name="login1" />
+            <input class="input-header" type="text" name="login1" required/>
             <div>Password</div>
-            <input class ="input-header" type="password" name="password1" />
+            <input class ="input-header" type="password" name="password1" required/>
             <input type="submit" name="connect" value ="sign in" id="sign" />
             <div style="font-size:10px" style="display:inline-block"><a href="reset_password.php">Forgot your password?</a></div> 
             </form>
@@ -35,13 +35,13 @@ include 'config/setup.php'
                 <img text-align="center" src="img/user.png" alt="logo_user" class="img_form" />
                 <form align="center" method="POST" action="" class="form">
                 <div class="item">Login</div>
-                <input style="text-align:center" type="text" name="login" />
+                <input style="text-align:center" type="text" name="login" required/>
                 <div class="item">Email</div>
-                <input style="text-align:center" type="text" name="email" />
+                <input style="text-align:center" type="text" name="email" required/>
                 <div class="item">Password</div>
-                <input style="text-align:center" type="password" name="password" />
+                <input style="text-align:center" type="password" name="password" required/>
                 <div class="item">Confirm password</div>
-                <input style="text-align:center" type="password" name="password" />
+                <input style="text-align:center" type="password" name="password" required/>
                 <br />
                 <input type="submit" name="inscrpition" value="sign up" class="button" />
                 </form>
