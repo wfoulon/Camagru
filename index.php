@@ -14,6 +14,7 @@ include 'config/setup.php'
         <!-- Charger les différentes polices  -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
         <link href="stylesheets/index.css" rel="stylesheet"/>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
         <div class="sign-bar">
@@ -33,17 +34,19 @@ include 'config/setup.php'
             </div>
             <div class="form-content">
                 <img text-align="center" src="img/user.png" alt="logo_user" class="img_form" />
-                <form align="center" method="POST" action="" class="form">
-                <div class="item">Login</div>
-                <input style="text-align:center" type="text" name="login" required/>
-                <div class="item">Email</div>
-                <input style="text-align:center" type="text" name="email" required/>
-                <div class="item">Password</div>
-                <input style="text-align:center" type="password" name="password" required/>
-                <div class="item">Confirm password</div>
-                <input style="text-align:center" type="password" name="password" required/>
-                <br />
-                <input type="submit" name="inscrpition" value="sign up" class="button" />
+                <script language="javascript" src="js/function.js"></script>
+                <form align="center" method="POST" action="" class="form" onsubmit="return verif_form(this)">
+                    <div class="item">Login</div>
+                    <input style="text-align:center" type="text" name="login" onblur="verif_login(this)" required/>
+                    <div class="item">Email</div>
+                    <input style="text-align:center" type="text" name="email" onblur="verif_email(this)" required/>
+                    <div class="item">Password</div>
+                    <input style="text-align:center" type="password" name="password" onblur="verif_password(this)" required/>
+                    <div class="item">Confirm password</div>
+                    <input style="text-align:center" type="password" name="password" onblur="verif_password(this)" required/>
+                    <br />
+                    <div class="g-recaptcha" data-sitekey="6LeLP1AUAAAAAI2CiGGLnKIKQIsJdEksmjOvdnH3"></div>
+                    <input type="submit" name="inscrpition" value="sign up" class="button" />
                 </form>
             </div>
             <?PHP

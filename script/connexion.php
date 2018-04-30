@@ -17,7 +17,7 @@ if ($_POST['connect'] == "sign in")
             $user_exist = $user_req->rowCount();
             /* Returns the number of rows affected by the last SQL statement */
         }
-        catch (PDOexeption $e)
+        catch (PDOexception $e)
         {
             print "ERROR: the mistake comes from: ".$e->getMessage()."";
             die();
@@ -45,7 +45,20 @@ if ($_POST['inscription'] == "sign up")
     {
         $login = trim(htmlentities($_POST['login']));
         $email = trim(htmlentities($_POST['email']));
-
+        try
+        {
+            $check_email = $db->prepare("SELECT * FROM users WHERE email= ?");
+            $check_email = execute(array($email));
+            $email_exist = $check_email->rowCount();
+            $check_login = $db->prepare("SELECT * FROM users WHERE login= ?");
+            $check_login = execute(array($login));
+            $login_exist = $check_login->rowCount();    
+        }
+        catch (PDOexception $e)
+        {
+            print "ERROR: the mistake comes from: ".$e->getMessage()."";
+            die();
+        }
     }
 }
 
@@ -55,6 +68,24 @@ function send_email($mail, $login, $token)
         $passage_ligne = "\r\n";
     else
         $passage_ligne = "\n";
-    
+    $destinataire = $mail;
+	$sujet = "Activer votre compte " .$login;
+	/* $entete = "From: inscription@votresite.com" ;*/
+	$host = exec("hostname -f");
+	/* Le lien d'activation est composé du login(log) et de la clé(cle) */
+	$message = 'Bienvenue sur Camagru,
+			 
+	Pour activer votre compte, veuillez cliquer sur le lien ci dessous
+	ou copier/coller dans votre navigateur internet.
+			 
+	http://'.$host.':8080/Camagru/script/validation.php?login='.$login.'&token='.$token.'
+			 
+			 
+	---------------
+	Ceci est un mail automatique, Merci de ne pas y répondre.';
+
+	/* Envoi du mail */
+	mail($destinataire, $sujet, $message);
 }
+
 ?>
