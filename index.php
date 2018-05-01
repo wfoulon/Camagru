@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-include 'config/setup.php'
+include 'config/setup.php';
 ?>
 
 <html>
@@ -24,7 +24,7 @@ include 'config/setup.php'
             <input class="input-header" type="text" name="login1" required/>
             <div>Password</div>
             <input class ="input-header" type="password" name="password1" required/>
-            <input type="submit" name="connect" value ="sign in" id="sign" />
+            <input type="submit" name="connect" value ="signin" id="sign" />
             <div style="font-size:10px" style="display:inline-block"><a href="reset_password.php">Forgot your password?</a></div> 
             </form>
         </div>
@@ -35,7 +35,7 @@ include 'config/setup.php'
             <div class="form-content">
                 <img text-align="center" src="img/user.png" alt="logo_user" class="img_form" />
                 <script language="javascript" src="js/function.js"></script>
-                <form align="center" method="POST" action="" class="form" onsubmit="return verif_form(this)">
+                <form align="center" method="POST" action="" class="form">
                     <div class="item">Login</div>
                     <input style="text-align:center" type="text" name="login" onblur="verif_login(this)" required/>
                     <div class="item">Email</div>
@@ -43,15 +43,21 @@ include 'config/setup.php'
                     <div class="item">Password</div>
                     <input style="text-align:center" type="password" name="password" onblur="verif_password(this)" required/>
                     <div class="item">Confirm password</div>
-                    <input style="text-align:center" type="password" name="password" onblur="verif_password(this)" required/>
+                    <input style="text-align:center" type="password" name="confirmpassword" onblur="verif_password(this)" required/>
                     <br />
                     <div class="g-recaptcha" data-sitekey="6LeLP1AUAAAAAI2CiGGLnKIKQIsJdEksmjOvdnH3"></div>
-                    <input type="submit" name="inscrpition" value="sign up" class="button" />
+                    <input type="submit" name="inscription" value="signup" class="button" />
                 </form>
             </div>
-            <?PHP
-            include 'script/connexion.php'; 
+            <div class="separator">
+            <?php
+            include 'script/connexion.php';
+                if (isset($ret))
+                {
+                    echo $ret;
+                }
             ?>
+            </div>
         </div>
     </body>
 </html>

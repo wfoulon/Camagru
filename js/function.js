@@ -1,4 +1,4 @@
-function sur_ligne(input, error) 
+function highlight(input, error) 
 {
     if (error)
         input.style.backgroundColor = "#fba";
@@ -16,12 +16,12 @@ function verif_login(input)
     var regex = /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/;
     if (!regex.test(input.value))
     {
-        sur_ligne(input, true);
+        highlight(input, true);
         return (false);
     }   
     else
     {
-        sur_ligne(input, false);
+        highlight(input, false);
         return (true);
     }
 }
@@ -31,12 +31,12 @@ function verif_email(input)
     var regex = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
     if (!regex.test(input.value))
     {
-        sur_ligne(input, true);
+        highlight(input, true);
         return false;
     }
     else 
     {
-        sur_ligne(input, false);
+        highlight(input, false);
         return true;
     }
 }
@@ -47,12 +47,12 @@ function verif_password(input)
     var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     if (!regex.test(input.value))
     {
-        sur_ligne(input, true);
+        highlight(input, true);
         return false;
     }
     else
     {
-        sur_ligne(input, false);
+        highlight(input, false);
         return true;
     }
 }
