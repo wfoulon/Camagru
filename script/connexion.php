@@ -65,7 +65,7 @@ if ($_POST['inscription'] == "signup")
                             $email_exist = count($check_email->fetchAll());
                             $check_login = $db->prepare("SELECT * FROM users WHERE login = ?");
                             $check_login2 = $check_login->execute(array($login));
-                            $login_exist = count($check_login->fetchAll()); 
+                            $login_exist = count($check_login->fetchAll());
                         }
                         catch (PDOexception $e)
                         {
@@ -119,7 +119,7 @@ if ($_POST['inscription'] == "signup")
                     }
                 }
                 else {
-                    "Password isn't valid, you must have at least eight characters, one uppercase letter, one lowercase letter and one number";
+                    $ret = "Password isn't valid, you must have at least eight characters, one uppercase letter, one lowercase letter and one number";
                 }
             }
             else {
@@ -137,10 +137,6 @@ if ($_POST['inscription'] == "signup")
 
 function send_email($mail, $login, $token)
 {
-/*     if (!preg_match("#^[a-zA-Z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
-        $passage_ligne = "\r\n";
-    else
-        $passage_ligne = "\n"; */
     $destinataire = $mail;
 	$sujet = "Activer votre compte " .$login;
 	/* $entete = "From: inscription@votresite.com" ;*/
@@ -155,7 +151,7 @@ function send_email($mail, $login, $token)
 			 
 			 
 	---------------
-	Ceci est un mail automatique, Merci de ne pas y répondre.';
+	Ceci est un mail automatique, Merci de ne pas y repondre.';
 
 	/* Envoi du mail */
 	mail($destinataire, $sujet, $message);
