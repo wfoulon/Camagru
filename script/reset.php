@@ -128,6 +128,77 @@ if ($_POST['button'] == "Change password")
     }
 }
 
+if ($_POST['reset'] == "Change email")
+{
+    $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    if (!empty($_POST['newemail']) && !empty($_POST['confirmnewemail']))
+    {
+        if (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", $_POST['newemail']))
+        {
+            if (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", $_POST['confirmnewemail']))
+            {
+                $newemail = htmlentities($_POST['newemail']);
+                $confirmnewemail = htmlentities($_POST['confirmnewemail']);
+                try
+                {
+                    $user_req = $db->prepare("SELECT * FROM users WHERE id = ?");
+                    $user_req->execute(array($_SESSION['id']));
+                    $user_info = $user_req->fetch();
+                }
+                catch (PDOexception $e)
+                {
+                    print "ERROR! the mistake comes from: ".$e->getMessage()."";
+                    die();
+                }
+                if ($newemail = $confirmnewemail)
+                {
+                    try
+                    {
+                        $check_email = $db->prepare("SELECT * FROM users WHERE id =?");
+                        $check_email->execute(array($confirmnewemail));
+                        $email_info = $check_email->rowCount();
+                    }
+                    catch (PDOexception $e)
+                    {
+                        print "ERROR! the mistake comes from: ".$e->getMessage()."";
+                        die();
+                    }
+                    if (!$email_info)
+                    {
+                        try
+                        {
+                            $insert_email = $db->prepare("UPDATE users SET email = ? WHERE id = ?");
+                            $insert_email->execute(array($confirmnewemail, $_SESSION['id']));
+                        }
+                        catch (PDOexception $e)
+                        {
+                            print "ERROR! the mistake comes from: ".$e->getMessage()."";
+                            die();
+                        }
+                        $_SESSION['email'] = $confirmnewemail;
+                        header("Location : reset_email.php");
+                    }
+                    else {
+                        $ret = "This email already exist";
+                    }
+                }
+                else {
+                    $ret = "Email doesn't match";
+                }
+            }
+            else {
+                $ret = "This email format isn't valid.";
+            }
+        }
+        else {
+            $ret = "This email format isn't valid.";
+        }
+    }
+    else {
+        $ret = "Please field all the inputs.";
+    }
+}
+
 function send_email($mail, $login)
 {
     $destinataire = $mail;

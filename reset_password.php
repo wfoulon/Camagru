@@ -15,13 +15,14 @@ include 'script/reset.php'
         <div class="page-container" align="center">
             <div class="form-content">
                 <img text-align="center" src="img/locked.png" alt="logo_user" class="img_form" />
+                <script language="javascript" src="js/function.js"></script>
                 <div class="title">Change password</div>
                 <form align="center" method="POST" action="" class="form">
                     <div class="item">Login</div>
-                        <input style="text-align:center" type="text" name="login" class="input" required/>
+                        <input style="text-align:center" type="text" name="login" class="input" onblur="verif_login(this)" required/>
                     <br>
                     <div class="item">Email</div>
-                        <input style="text-align:center" type="email" name="email" class="input" required/>
+                        <input style="text-align:center" type="email" name="email" class="input" onblur="verif_email(this)" required/>
                     <br>
                     <div align="center">
                         <input type="submit" name="button" value="Send mail" class="button" />
