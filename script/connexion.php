@@ -34,6 +34,9 @@ if ($_POST['connect'] == "signin")
             $_SESSION['login'] = $user_info['login'];
             $_SESSION['email'] = $user_info['email'];
             $_SESSION['password'] = $mdp1;
+            echo '<script language="javascript">
+                document.location.href="mainpage.php";
+                </script>';
         }
         else {
             $ret = "Wrong password or user not registered yet";
