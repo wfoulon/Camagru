@@ -83,15 +83,15 @@ if ($_POST['button'] == "Change password")
                             print "ERROR! The mistake comes from: ".$e->getMessage()."";
                             die();
                         }
-                        if ($user_info == 0)
+                        if ($user_info)
                         {
                             if ($newpsd == $confnewpsd)
                             {
                                 try
                                 {
-                                $change_psd = $db->prepare("UPDATE users SET password = ? WHERE login = ?");
-                                $change_psd->execute(array($confnewpsd, $login));
-                                $ret = "Password has been updated successfully";
+                                    $change_psd = $db->prepare("UPDATE users SET password = ? WHERE login = ?");
+                                    $change_psd->execute(array($confnewpsd, $login));
+                                    $ret = "Password has been updated successfully";
                                 }
                                 catch (PDOexception $e)
                                 {
