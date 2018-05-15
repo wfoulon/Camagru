@@ -14,7 +14,6 @@ include 'config/setup.php';
         <!-- Charger les différentes polices  -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
         <link href="stylesheets/index.css" rel="stylesheet"/>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
         <div class="sign-bar">
@@ -45,7 +44,6 @@ include 'config/setup.php';
                     <div class="item">Confirm password</div>
                     <input style="text-align:center" type="password" name="confirmpassword" onblur="verif_password(this)" required/>
                     <br />
-                    <div class="g-recaptcha" data-sitekey="6LeLP1AUAAAAAI2CiGGLnKIKQIsJdEksmjOvdnH3"></div>
                     <input type="submit" name="inscription" value="signup" class="button" />
                 </form>
             </div>

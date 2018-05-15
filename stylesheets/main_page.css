@@ -1,0 +1,91 @@
+html,
+body {
+    font-size: 16px;
+    line-height: 1.4;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: rgb(26, 26, 26);
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    min-height: 80px;
+    line-height: 80px;
+    display: inline-block;
+    background-color: dodgerblue;
+}
+
+.header img, .header .menu-buttons {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#logo-menu{ 
+    position: relative;
+    left: 10px;
+    min-height: 80px;
+    width: 200px;
+}
+
+.menu-buttons {
+    min-height: 80px;
+    width: calc(100% - 210px);
+    text-align: center;
+}
+
+.menu-buttons a {
+    margin: 40px;
+}
+
+.menu-buttons img {
+    height: 40px;
+    width: 40px;
+    filter: invert(100%);
+    transition-duration: .3s;
+}
+
+.menu-buttons a:hover img {
+    filter: invert(0);
+    transition-duration: .3s;
+}
+
+.footer{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80px;
+    background-color: dodgerblue;
+    text-align: center;
+}
+
+.copyright{
+    height: 80px;
+    line-height: 80px;
+    font-weight: 100;
+}
+
+@media only screen and (max-width: 830px) {
+    .menu-buttons {
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .menu-buttons a {
+        margin: 20px !important;
+    }
+    .menu-buttons a img {
+        width: 25px;
+        height: 25px;
+    }
+}
