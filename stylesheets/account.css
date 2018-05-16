@@ -1,0 +1,42 @@
+.rect{
+    width: 50%;
+   
+    border: 5px solid dodgerblue;
+    font-size: 25px;
+}
+
+.pswd, .eml, .delete, .name{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: black;
+}
+
+.rect img{
+    height: 50px;
+    filter: invert(0.8);
+}
+
+.rect div:nth-child(odd) {
+    background: rgba(255, 255, 255, .055);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+     color: dodgerblue;
+ }
+
+
+@media only screen and (max-width: 830px){
+    .rect{
+        display: block !important;
+        margin-top: 175px;
+    }
+
+    .site-content{
+        top: 100;
+    }
+}

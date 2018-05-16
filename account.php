@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "config/setup.php";
+
 ?>
 
 <html>
@@ -8,6 +7,7 @@ include "config/setup.php";
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link href="stylesheets/main_page.css" rel="stylesheet">
+        <link href="stylesheets/account.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="img/homelogo.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
     </head>
@@ -24,12 +24,25 @@ include "config/setup.php";
                             <a href="logout.php"><img class="menu-btn" src="img/logout.png" alt="logout"/></a>
                         </div>
                 </header>
+            </div>
                 <div class="site-content">
-                    <div class="container">
-                        
+                    <div class="container" align="center">
+                        <div class="rect">
+                            <div class="pswd">
+                                <a href="change_password.php"><img src="img/warning.png" alt="locked"/><p>Change your password</p></a>
+                            </div>
+                            <div class="eml">
+                                <a href="reset_email.php"><img src="img/envelope.png" alt="envelope"/><p>Change your email</p></a>
+                            </div>
+                            <div class="name">
+                                <a href="reset_username.php"><img src="img/account.png" alt="account"/><p>Change your username</p></a>
+                            </div>
+                            <div class="delete">
+                                <a href="delete_account.php"><img src="img/garbage.png" alt="garbage"/><p>Delete your account</p></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             <div class="separator"></div>
             <footer class="footer">
                 <div class="copyright">
@@ -38,6 +51,5 @@ include "config/setup.php";
                 </div>
             </footer>
         </div>
-        <script language="javascript" src="js/camera.js"></script>
     </body>
 </html>

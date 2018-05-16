@@ -14,6 +14,7 @@ body {
 
 .header {
     position: fixed;
+    z-index: 800;
     left: 0;
     right: 0;
     top: 0;
@@ -21,6 +22,9 @@ body {
     line-height: 80px;
     display: inline-block;
     background-color: dodgerblue;
+    -webkit-box-shadow: 0px 9px 30px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 9px 30px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 9px 30px -1px rgba(0,0,0,0.75);
 }
 
 .header img, .header .menu-buttons {
@@ -57,8 +61,13 @@ body {
     transition-duration: .3s;
 }
 
+.site-content {
+    position: relative;
+    top: 170;
+}
+
 .footer{
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
@@ -87,5 +96,11 @@ body {
     .menu-buttons a img {
         width: 25px;
         height: 25px;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .copyright{
+        font-size: 2vw;
     }
 }

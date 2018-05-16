@@ -20,9 +20,9 @@ include 'config/setup.php';
             <img src="img/logme.png" alt="login-logo" width="90px"/>Welcome
             <form method="POST" action="" id="sign_in">
             <div>Login</div>
-            <input class="input-header" type="text" name="login1" required/>
+            <input class="input-header" type="text" name="login1" onblur="verif_login(this)" required/>
             <div>Password</div>
-            <input class ="input-header" type="password" name="password1" required/>
+            <input class ="input-header" type="password" name="password1" onblur="verif_password(this)" required/>
             <input type="submit" name="connect" value ="signin" id="sign" />
             <div style="font-size:10px" style="display:inline-block"><a href="reset_password.php">Forgot your password?</a></div> 
             </form>
@@ -43,6 +43,8 @@ include 'config/setup.php';
                     <input style="text-align:center" type="password" name="password" onblur="verif_password(this)" required/>
                     <div class="item">Confirm password</div>
                     <input style="text-align:center" type="password" name="confirmpassword" onblur="verif_password(this)" required/>
+                    <br />
+                    <br />
                     <br />
                     <input type="submit" name="inscription" value="signup" class="button" />
                 </form>

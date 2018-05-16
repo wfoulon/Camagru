@@ -6,8 +6,8 @@
         canvas = document.querySelector('#canvas'),
         photo = document.querySelector('#photo'),
         startbutton = document.querySelector('#startbutton'),
-        width = 320,
-        height = 0;
+        width = 400,
+        height = 400;
 
     navigator.getMedia = (navigator.getUserMedia ||
         navigator.webkitGetUserMedia ||
