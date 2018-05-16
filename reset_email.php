@@ -17,7 +17,7 @@ include 'script/reset.php';
             <div class="form-content">
                 <img text-align="center" src="img/locked.png" alt="logo_user" class="img_form" />
                 <script language="javascript" src="js/function.js"></script>
-                <div class="title" align="center">Modify email</div>
+                <div class="title" align="center">Change email</div>
                 <?php
                     echo '<center>actual email : '.$_SESSION['email'].'</center>';
                 ?>
