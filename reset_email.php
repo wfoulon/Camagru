@@ -10,14 +10,14 @@ include 'script/reset.php';
         <link href="stylesheets/index.css" rel="stylesheet" />
         <link rel="icon" type="image/png" href="img/homelogo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Reset email</title>
+        <title>Change email</title>
     </head>
     <body>
         <div class="page-container" align="center">
             <div class="form-content">
                 <img text-align="center" src="img/locked.png" alt="logo_user" class="img_form" />
                 <script language="javascript" src="js/function.js"></script>
-                <div class="title" align="center">Modify email</div>
+                <div class="title" align="center">Change email</div>
                 <?php
                     echo '<center>actual email : '.$_SESSION['email'].'</center>';
                 ?>

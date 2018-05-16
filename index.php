@@ -14,16 +14,15 @@ include 'config/setup.php';
         <!-- Charger les différentes polices  -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
         <link href="stylesheets/index.css" rel="stylesheet"/>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
         <div class="sign-bar">
             <img src="img/logme.png" alt="login-logo" width="90px"/>Welcome
             <form method="POST" action="" id="sign_in">
             <div>Login</div>
-            <input class="input-header" type="text" name="login1" required/>
+            <input class="input-header" type="text" name="login1" onblur="verif_login(this)" required/>
             <div>Password</div>
-            <input class ="input-header" type="password" name="password1" required/>
+            <input class ="input-header" type="password" name="password1" onblur="verif_password(this)" required/>
             <input type="submit" name="connect" value ="signin" id="sign" />
             <div style="font-size:10px" style="display:inline-block"><a href="reset_password.php">Forgot your password?</a></div> 
             </form>
@@ -45,7 +44,8 @@ include 'config/setup.php';
                     <div class="item">Confirm password</div>
                     <input style="text-align:center" type="password" name="confirmpassword" onblur="verif_password(this)" required/>
                     <br />
-                    <div class="g-recaptcha" data-sitekey="6LeLP1AUAAAAAI2CiGGLnKIKQIsJdEksmjOvdnH3"></div>
+                    <br />
+                    <br />
                     <input type="submit" name="inscription" value="signup" class="button" />
                 </form>
             </div>

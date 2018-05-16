@@ -4,7 +4,7 @@ include 'config/database.php';
 $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
 /* Script: connection of the user on the website */
-if ($_POST['connect'] == "signin")
+if (isset($_POST['connect']) == "signin")
 {
     if (!empty($_POST['login1']) && !empty($_POST['password1']))
     {
@@ -35,7 +35,7 @@ if ($_POST['connect'] == "signin")
             $_SESSION['email'] = $user_info['email'];
             $_SESSION['password'] = $mdp1;
             echo '<script language="javascript">
-                document.location.href="mainpage.php";
+                document.location.href="main_page.php";
                 </script>';
         }
         else {
@@ -47,7 +47,7 @@ if ($_POST['connect'] == "signin")
     }
 }
 /* Script: inscription of the user on the website */
-if ($_POST['inscription'] == "signup")
+if (isset($_POST['inscription']) == "signup")
 {
     if (!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirmpassword']))
     {

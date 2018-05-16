@@ -1,9 +1,9 @@
 <?php
-session_start();
+/* session_start(); */
 set_include_path("../");
 include 'config/database.php';
 
-if ($_POST['button'] == "Send mail")
+if (isset($_POST['button']) == "Send mail")
 {
     $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     if (!empty($_POST['login']) && !empty($_POST['email']))
@@ -55,7 +55,7 @@ if ($_POST['button'] == "Send mail")
     }
 }
 
-if ($_POST['button'] == "Change password")
+if (isset($_POST['button']) == "Change password")
 {
     $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     if (!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['newpassword']) && !empty($_POST['confirmnewpassword']))
@@ -128,11 +128,13 @@ if ($_POST['button'] == "Change password")
     }
 }
 
-if ($_POST['reset'] == "Change email")
+/* Change email user */
+if (isset($_POST['reset']) == "Change email")
 {
     $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     if (!empty($_POST['newemail']) && !empty($_POST['confirmnewemail']))
     {
+        /* Check if the email format is valid */
         if (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", $_POST['newemail']))
         {
             if (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", $_POST['confirmnewemail']))
@@ -150,6 +152,7 @@ if ($_POST['reset'] == "Change email")
                     print "ERROR! the mistake comes from: ".$e->getMessage()."";
                     die();
                 }
+                /* Check if the email match */
                 if ($newemail = $confirmnewemail)
                 {
                     try
@@ -163,6 +166,7 @@ if ($_POST['reset'] == "Change email")
                         print "ERROR! the mistake comes from: ".$e->getMessage()."";
                         die();
                     }
+                    /* Check if the email already exist */
                     if (!$email_info)
                     {
                         try
@@ -196,6 +200,37 @@ if ($_POST['reset'] == "Change email")
     }
     else {
         $ret = "Please field all the inputs.";
+    }
+}
+
+if (isset($_POST['button']) == "Change login")
+{
+    $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    if (!empty($_POST['newlogin']) && !empty($_POST['confirmnewlogin']))
+    {
+        if (preg_match("/^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/", $_POST['newlogin']))
+        {
+            if (preg_match("/^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/", $_POST['confirmnewlogin']))
+            {
+                $newlogin = htmlentities($_POST['newlogin']);
+                $confirmnewlogin = htmlentities($_POST['confirmnewlogin']);
+                try
+                {
+                    $user_req = $db->prepare("SELECT * FROM users WHERE id = ?");
+                    $user_req->execute(array($_SESSION['id']));
+                    $user_info = $user_req->fetch();
+                }
+                catch (PDOexception $e)
+                {
+                    print "ERROR! the mistake comes from: ".$e->getMessage()."";
+                    die();
+                }
+                if ($newlogin = $confirmnewlogin)
+                {
+                    
+                }
+            }
+        }
     }
 }
 
