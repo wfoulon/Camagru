@@ -82,6 +82,16 @@ body {
     font-weight: 100;
 }
 
+#canvas, #video{
+/*     height: auto; */
+    display: block;
+}
+
+#video{
+    border: 10px groove dodgerblue;
+    border-radius: 15px;
+}
+
 @media only screen and (max-width: 830px) {
     .menu-buttons {
         display: block !important;
@@ -102,5 +112,14 @@ body {
 @media only screen and (max-width: 580px) {
     .copyright{
         font-size: 2vw;
+    }
+}
+
+@media only screen and (max-width: 720px)
+{
+    #video{
+        width: 250px !important;
+        height: 250px !important;
+        margin-top: 50px;
     }
 }

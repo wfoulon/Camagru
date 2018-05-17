@@ -30,7 +30,7 @@ include 'script/reset.php'
                 </form>
             </div>
             <div class="separator"></div>
-            <a class="back" href="index.php">Back</a>
+            <a class="back" href="account.php">Back</a>
             <div class="separator"></div>
             <?php
                 if (isset($ret))

@@ -1,7 +1,7 @@
 .rect{
     width: 50%;
-   
-    border: 5px solid dodgerblue;
+    border-radius: 15px;
+    border: 10px groove dodgerblue;
     font-size: 25px;
 }
 
@@ -16,6 +16,7 @@
     filter: invert(0.8);
 }
 
+/* Permet de mettre une div sur deux en couleur  */
 .rect div:nth-child(odd) {
     background: rgba(255, 255, 255, .055);
 }

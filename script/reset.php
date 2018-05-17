@@ -39,7 +39,7 @@ if (isset($_POST['button']) == "Send mail")
                     }
                 }
                 else{
-                    $ret = "This login doesn't exist.";
+                    $ret = "This Username doesn't exist.";
                 }
             }
             else {
@@ -47,7 +47,7 @@ if (isset($_POST['button']) == "Send mail")
             }
         }
         else {
-            $ret = "This login isn't valid. Please try again.";
+            $ret = "This Username isn't valid. Please try again.";
         }
     }
     else {
@@ -180,10 +180,10 @@ if (isset($_POST['reset']) == "Change email")
                             die();
                         }
                         $_SESSION['email'] = $confirmnewemail;
-                        header("Location : reset_email.php");
+                        header("Location: reset_email.php");
                     }
                     else {
-                        $ret = "This email already exist";
+                        $ret = "This email already exist. Please choose another one";
                     }
                 }
                 else {
@@ -227,10 +227,50 @@ if (isset($_POST['button']) == "Change login")
                 }
                 if ($newlogin = $confirmnewlogin)
                 {
-                    
+                    try
+                    {
+                        $check_login = $db->prepare("SELECT * FROM users WHERE id = ?");
+                        $check_login->execute(array($confirmnewlogin));
+                        $login_info = $check_login->rowCount();
+                    }
+                    catch (PDOexception $e)
+                    {
+                        print "ERROR! the mistake comes from: ".$e->getMessage()."";
+                        die();
+                    }
+                    if (!$login_info)
+                    {
+                        try
+                        {
+                            $update_login = $db->prepare("UPDATE users SET login = ? WHERE id = ?");
+                            $update_login->execute(array($confirmnewlogin, $_SESSION['id']));
+                        }
+                        catch (PDOexception $e)
+                        {
+                            print "ERROR! the mistake comes from: ".$e->getMessage()."";
+                            die();
+                        }
+                        $_SESSION['login'] = $confirmnewlogin;
+                        header("Location: reset_username.php");
+                    }
+                    else {
+                        $ret = "This username already exist. Please choose another one";
+                    }
+                }
+                else {
+                    $ret = "Username doesn't match";
                 }
             }
+            else {
+                $ret = "Username format is invalid";
+            }
         }
+        else {
+            $ret = "Username format is invalid";
+        }
+    }
+    else {
+        $ret = "Please field all the inputs";
     }
 }
 

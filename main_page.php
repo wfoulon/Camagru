@@ -25,8 +25,10 @@ include "config/setup.php";
                         </div>
                 </header>
                 <div class="site-content">
-                    <div class="container">
-                        
+                    <div class="container" align="center">
+                        <div class="vid">
+                            <video id="video"></video>
+                        </div>
                     </div>
                 </div>
             </div>
