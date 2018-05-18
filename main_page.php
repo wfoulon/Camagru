@@ -29,6 +29,9 @@ include "config/setup.php";
                         <div class="vid">
                             <video id="video"></video>
                         </div>
+                        <div class="cam">
+                            <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="buttonstart()"/></a>
+                        </div>
                     </div>
                 </div>
             </div>

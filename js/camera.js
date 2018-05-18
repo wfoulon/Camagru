@@ -1,3 +1,14 @@
+function hasGetUserMedia() {
+    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+}
+
+if (hasGetUserMedia()){
+    alert("getUserMedia is supported by your browser");
+}
+else{
+    alert("getUserMedia is not supported by your browser");
+}
+
 (function () {
 
     var streaming = false,
@@ -20,12 +31,12 @@
             audio: false
         },
         function (stream) {
-            if (navigator.mozGetUserMedia) {
-                video.mozSrcObject = stream;
-            } else {
+            // if (navigator.mozGetUserMedia) {
+            //     video.mozSrcObject = stream;
+            // } else {
                 var vendorURL = window.URL || window.webkitURL;
                 video.src = vendorURL.createObjectURL(stream);
-            }
+            // }
             video.play();
         },
         function (err) {
