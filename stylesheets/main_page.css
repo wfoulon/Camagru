@@ -92,6 +92,13 @@ body {
     border-radius: 15px;
 }
 
+#imageTaken{
+    display: none;
+    max-width: 90%;
+    border: 10px groove dodgerblue;
+    border-radius: 15px;
+}
+
 @media only screen and (max-width: 830px) {
     .menu-buttons {
         display: block !important;

@@ -1,15 +1,4 @@
-function hasGetUserMedia() {
-    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-}
-
-if (hasGetUserMedia()){
-    alert("getUserMedia is supported by your browser");
-}
-else{
-    alert("getUserMedia is not supported by your browser");
-}
-
-(function () {
+/* (function () {
 
     var streaming = false,
         video = document.querySelector('#video'),
@@ -53,9 +42,9 @@ else{
             canvas.setAttribute('height', height);
             streaming = true;
         }
-    }, false);
+    }, false); */
 
-    function takepicture() {
+/*     function takepicture() {
         canvas.width = width;
         canvas.height = height;
         canvas.getContext('2d').drawImage(video, 0, 0, width, height);
@@ -66,6 +55,51 @@ else{
     startbutton.addEventListener('click', function (ev) {
         takepicture();
         ev.preventDefault();
-    }, false);
+    }, false); */
 
+let img = document.getElementById("imageTaken");
+
+(function () {
+    'use strict';
+    var video = document.querySelector('video')
+        , canvas;
+
+        /**
+         *  generates a still frame image from the stream in the <video>
+         *  appends the image to the <body>
+         */
+    function takeSnapshot() {
+        // var img = document.querySelector('pict') || document.createElement('pict');
+        var context;
+            var width = video.offsetWidth
+            , height = video.offsetHeight;
+
+        canvas = canvas || document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+
+        context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, width, height);
+
+        img.src = canvas.toDataURL('image/png');
+        img.style.display = "block";
+        video.style.display = "none";
+        // document.body.appendChild(img);
+    }
+
+    // use MediaDevices API
+    // docs: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+    if (navigator.mediaDevices) {
+        // access the web cam
+        navigator.mediaDevices.getUserMedia({ video: true })
+            // permission granted:
+            .then(function (stream) {
+                video.src = window.URL.createObjectURL(stream);
+                video.addEventListener('click', takeSnapshot);
+                })
+                // permission denied:
+            .catch(function (error) {
+                document.body.textContent = 'Could not access the camera. Error: ' + error.name;
+            });
+    }
 })();
