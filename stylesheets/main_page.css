@@ -94,9 +94,28 @@ body {
 
 #imageTaken{
     display: none;
-    max-width: 90%;
+/*     max-width: 80%; */
+    width: 640px;
+    height: 480px;
     border: 10px groove dodgerblue;
     border-radius: 15px;
+}
+
+.cam{
+    border: 10px groove dodgerblue;
+    border-radius: 15px;
+    margin: 10px;
+    background-color: lightskyblue;
+    width: 640px;
+}
+
+.cam-logo{
+    width: 50px;
+    margin: 10px;
+}
+
+.cam-logo:hover{
+    filter: invert(100);
 }
 
 @media only screen and (max-width: 830px) {
@@ -126,7 +145,17 @@ body {
 {
     #video{
         width: 250px !important;
-        height: 250px !important;
+        height: 190px !important;
         margin-top: 50px;
+    }
+
+    #imagetaken{
+        width: 250px !important;
+        height: 190px !important;
+        margin-top: 50px;
+    }
+
+    .cam{
+        width: 250px !important;
     }
 }

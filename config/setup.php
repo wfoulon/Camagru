@@ -1,13 +1,13 @@
 <?PHP
 include 'database.php';
 
-try{
+/* try{
 $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 }
 catch(PDOException $e){
-    print "Failure to connect with the servor! the mistake comes from: ".$e;
+    print "Failure to connect with the servor! the mistake comes from: ".$e; */
     try{
-        $db = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $db = new PDO($DB_DSN.";ddname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         $req = "CREATE DATABASE IF NOT EXISTS `".$DB_NAME."` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
         $db->query($req);
         $db->query("USE ".$DB_NAME);
@@ -18,8 +18,9 @@ catch(PDOException $e){
     
     try{
         if ($db){
+           /*  users table */
             $users_table = "CREATE TABLE IF NOT EXISTS users(
-                            `id` INT(5) NOT NULL AUTO_INCREMENT,
+                            `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
                             `login` VARCHAR(255) NOT NULL,
                             `email` VARCHAR(255) NOT NULL,
                             `password` VARCHAR(255) NOT NULL,
@@ -27,14 +28,25 @@ catch(PDOException $e){
                             `token` VARCHAR(255) NOT NULL,
                             PRIMARY KEY (`id`)
                             );";
-            $users_table = $db->prepare($users_table);
-            $users_table->execute();
-        }
+            $req_users_table = $db->prepare($users_table);
+            $req_users_table->execute();
+        
+            $post_table = "CREATE TABLE IF NOT EXISTS post(
+                            `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                            `login` VARCHAR(255) NOT NULL,
+                            `creation_date` DATETIME,
+                            `nb_likes` INT UNSIGNED DEFAULT 0,
+                            `nb_comments` INT UNSIGNED DEFAULT 0,
+                            PRIMARY KEY(`id`)
+                            );";
+            $req_post_table = $db->prepare($post_table);
+            $req_post_table->execute();
+        }        
     }
     catch(PDOException $e){
         print "ERROR! The mistake comes from: ".$e;
     }
-}
+
 
 
 ?>

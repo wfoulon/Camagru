@@ -1,5 +1,4 @@
 /* (function () {
-
     var streaming = false,
         video = document.querySelector('#video'),
         cover = document.querySelector('#cover'),
@@ -8,12 +7,11 @@
         startbutton = document.querySelector('#startbutton'),
         width = 700;
         height = 550;
-
-    navigator.getMedia = (navigator.getUserMedia ||
+        
+/*    navigator.getMedia = (navigator.getUserMedia ||
         navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia ||
         navigator.msGetUserMedia);
-
     navigator.getMedia(
         {
             video: true,
@@ -32,7 +30,6 @@
             console.log("An error occured! " + err);
         }
     );
-
     video.addEventListener('canplay', function (ev) {
         if (!streaming) {
             height = video.videoHeight / (video.videoWidth / width);
@@ -51,11 +48,11 @@
         var data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
     }
-
     startbutton.addEventListener('click', function (ev) {
         takepicture();
         ev.preventDefault();
-    }, false); */
+    }, false);
+}) (); */
 
 let img = document.getElementById("imageTaken");
 
@@ -64,17 +61,13 @@ let img = document.getElementById("imageTaken");
     var video = document.querySelector('video')
         , canvas;
 
-        /**
-         *  generates a still frame image from the stream in the <video>
-         *  appends the image to the <body>
-         */
     function takeSnapshot() {
         // var img = document.querySelector('pict') || document.createElement('pict');
         var context;
-            var width = video.offsetWidth
+        var width = video.offsetWidth
             , height = video.offsetHeight;
-
         canvas = canvas || document.createElement('canvas');
+        
         canvas.width = width;
         canvas.height = height;
 
@@ -86,20 +79,29 @@ let img = document.getElementById("imageTaken");
         video.style.display = "none";
         // document.body.appendChild(img);
     }
-
-    // use MediaDevices API
-    // docs: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
     if (navigator.mediaDevices) {
-        // access the web cam
+        // access the web cam:
         navigator.mediaDevices.getUserMedia({ video: true })
             // permission granted:
             .then(function (stream) {
                 video.src = window.URL.createObjectURL(stream);
-                video.addEventListener('click', takeSnapshot);
-                })
-                // permission denied:
+/*                 video.addEventListener('click', takeSnapshot); */
+            })
+            // permission denied:
             .catch(function (error) {
                 document.body.textContent = 'Could not access the camera. Error: ' + error.name;
             });
     }
+    startbutton.addEventListener('click', function (ev) {
+        takeSnapshot();
+        ev.preventDefault();
+    }, false);
 })();
+
+/* function deleteSnapshot(){
+
+};
+*/
+/* function saveSnapshot(){
+
+}; */

@@ -21,7 +21,7 @@ include 'script/reset.php';
                 <?php
                     echo '<center>actual email : '.$_SESSION['email'].'</center>';
                 ?>
-                <form align="center" class="form" method="POST" action="">
+                <form align="center" class="form" method="POST" action="" autocomplete="off">
                     <div class="item">New email</div>
                         <input style="text-align:center" type="text" class="input" name="newemail" onblur="verif_email(this)" required>
                     <br />

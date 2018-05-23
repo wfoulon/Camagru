@@ -93,7 +93,7 @@ if (isset($_POST['inscription']) == "signup")
                                             $insert_users = $db->prepare("INSERT INTO users(login, email, password, confirmation, token) VALUES(?, ?, ?, 0, ?)");
                                             $insert_users = $insert_users->execute(array($login, $email, $mdp, $token));
                                             send_email($email, $login, $token);
-                                            $ret = "Your account have been created, check your email to confirm it!";
+                                            $ret = "Your account has been created, check your email to confirm it!";
                                         }
                                         catch (PDOexception $e)
                                         {
@@ -142,15 +142,15 @@ function send_email($mail, $login, $token)
 {
     $destinataire = $mail;
 	$sujet = "Activer votre compte " .$login;
-	/* $entete = "From: inscription@votresite.com" ;*/
-	$host = exec("hostname -f");
+	$entete = "From: Camagru@42.fr" ;
+/* 	$host = exec("hostname -f"); */
 	/* Le lien d'activation est composé du login(log) et de la clé(cle) */
 	$message = 'Bienvenue sur Camagru,
 			 
 	Pour activer votre compte, veuillez cliquer sur le lien ci dessous
 	ou copier/coller dans votre navigateur internet.
 			 
-	http://'.$host.':8080/Camagru/script/validation.php?login='.$login.'&token='.$token.'
+	http://'.$_SERVER['HTTP_HOST'].'/Camagru/script/validation.php?login='.$login.'&token='.$token.'
 			 
 			 
 	---------------

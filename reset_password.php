@@ -17,7 +17,7 @@ include 'script/reset.php'
                 <img text-align="center" src="img/locked.png" alt="logo_user" class="img_form" />
                 <script language="javascript" src="js/function.js"></script>
                 <div class="title">Change password</div>
-                <form align="center" method="POST" action="" class="form">
+                <form align="center" method="POST" action="" class="form" autocomplete="off">
                     <div class="item">Login</div>
                         <input style="text-align:center" type="text" name="login" class="input" onblur="verif_login(this)" required/>
                     <br>
@@ -30,7 +30,7 @@ include 'script/reset.php'
                 </form>
             </div>
             <div class="separator"></div>
-            <a class="back" href="account.php">Back</a>
+            <a class="back" href="index.php">Back</a>
             <div class="separator"></div>
             <?php
                 if (isset($ret))

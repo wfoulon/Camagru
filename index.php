@@ -1,6 +1,8 @@
 <?PHP
 session_start();
+/* include 'config/database.php'; */
 include 'config/setup.php';
+include 'script/connexion.php';
 ?>
 
 <html>
@@ -18,7 +20,7 @@ include 'config/setup.php';
     <body>
         <div class="sign-bar">
             <img src="img/logme.png" alt="login-logo" width="90px"/>Welcome
-            <form method="POST" action="" id="sign_in">
+            <form method="POST" action="" id="sign_in" autocomplete="off">
             <div>Login</div>
             <input class="input-header" type="text" name="login1" onblur="verif_login(this)" required/>
             <div>Password</div>
@@ -29,12 +31,12 @@ include 'config/setup.php';
         </div>
         <div class="page-container" align="center">
             <div class="welcome">
-                <img src="img/homelogo.png" alt="homelogo">
+                <a href="my_gallery.php"><img src="img/homelogo.png" alt="homelogo"></a>
             </div>
             <div class="form-content">
                 <img text-align="center" src="img/user.png" alt="logo_user" class="img_form" />
                 <script language="javascript" src="js/function.js"></script>
-                <form align="center" method="POST" action="" class="form">
+                <form align="center" method="POST" action="" class="form" autocomplete="off">
                     <div class="item">Login</div>
                     <input style="text-align:center" type="text" name="login" onblur="verif_login(this)" required/>
                     <div class="item">Email</div>
@@ -51,7 +53,6 @@ include 'config/setup.php';
             </div>
             <div class="separator">
             <?php
-            include 'script/connexion.php';
                 if (isset($ret))
                 {
                     echo $ret;

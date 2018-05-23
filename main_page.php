@@ -27,11 +27,14 @@ include "config/setup.php";
                 <div class="site-content">
                     <div class="container" align="center">
                         <div class="vid">
-                            <video id="video" autoplay></video>
+                            <video id="video" autoplay="true"></video>
                              <img id="imageTaken"/>
                         </div>
+<!--                         <div class="separator"></div> -->
                         <div class="cam">
-                            <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takeSnapshot()"/></a>
+                            <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="function()"/></a>
+                            <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo" onClick="deleteSnapshot()"/></a> 
+                            <a id="savesnapshot"><img src="img/check.png" alt="save" class="cam-logo" onClick="saveSnapshot()"/></a>
                         </div>
                     </div>
                 </div>

@@ -32,5 +32,5 @@ catch (PDOexception $e)
 <script language="JavaScript">
 setTimeout(function(){
 document.location.href="../index.php";
-}, 4000);
+}, 3000);
 </script>

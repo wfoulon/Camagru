@@ -22,7 +22,7 @@ include "script/reset.php";
                     <?php
                         echo '<center>actual username : '.$_SESSION['login'].'</center>';
                     ?>
-                <form align="center" method="POST" action="" class="form">
+                <form align="center" method="POST" action="" class="form" autocomplete="off">
                     <div class="item">New login</div>
                         <input style="text-align:center" type="text" class="input" name="newlogin" onblur="verif_login(this)" required>
                     <br />
