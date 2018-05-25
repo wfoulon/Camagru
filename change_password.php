@@ -31,7 +31,7 @@ include 'script/reset.php'
                         <input style="text-align:center;" class="input" type="password" name="confirmnewpassword" onblur="verif_password(this)" required/>
                     <br>
                     <div align="center">
-                        <input type="submit" name="button" value="Change password" class="button" />
+                        <input type="submit" name="psd" value="Change password" class="button" />
                     </div>
                 </form>
             </div>

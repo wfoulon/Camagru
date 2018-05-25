@@ -54,7 +54,7 @@
     }, false);
 }) (); */
 
-let img = document.getElementById("imageTaken");
+/* let img = document.getElementById("imageTaken");
 
 (function () {
     'use strict';
@@ -85,7 +85,7 @@ let img = document.getElementById("imageTaken");
             // permission granted:
             .then(function (stream) {
                 video.src = window.URL.createObjectURL(stream);
-/*                 video.addEventListener('click', takeSnapshot); */
+                //video.addEventListener('click', takeSnapshot);
             })
             // permission denied:
             .catch(function (error) {
@@ -96,7 +96,7 @@ let img = document.getElementById("imageTaken");
         takeSnapshot();
         ev.preventDefault();
     }, false);
-})();
+})(); */
 
 /* function deleteSnapshot(){
 

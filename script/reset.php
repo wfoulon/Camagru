@@ -1,6 +1,6 @@
 <?php
 /* session_start(); */
-set_include_path("../");
+/* set_include_path("../"); */
 include 'config/database.php';
 
 if (isset($_POST['button']) == "Send mail")
@@ -55,7 +55,7 @@ if (isset($_POST['button']) == "Send mail")
     }
 }
 
-if (isset($_POST['button']) == "Change password")
+if (isset($_POST['psd']) == "Change password")
 {
     $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     if (!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['newpassword']) && !empty($_POST['confirmnewpassword']))
@@ -123,10 +123,11 @@ if (isset($_POST['button']) == "Change password")
             $ret = "This login isn't valid. Please try again.";
         }
     }
-    else{
-        $ret = "Please field all the inputs.";
+    else {
+        $ret = "Please field all the inputs";
     }
 }
+
 
 /* Change email user */
 if (isset($_POST['reset']) == "Change email")
@@ -160,6 +161,7 @@ if (isset($_POST['reset']) == "Change email")
                         $check_email = $db->prepare("SELECT * FROM users WHERE id =?");
                         $check_email->execute(array($confirmnewemail));
                         $email_info = $check_email->rowCount();
+                        $ret = "New email has been updated successfully";
                     }
                     catch (PDOexception $e)
                     {
@@ -203,7 +205,7 @@ if (isset($_POST['reset']) == "Change email")
     }
 }
 
-if (isset($_POST['button']) == "Change login")
+if (isset($_POST['user']) == "Change login")
 {
     $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     if (!empty($_POST['newlogin']) && !empty($_POST['confirmnewlogin']))
@@ -232,6 +234,7 @@ if (isset($_POST['button']) == "Change login")
                         $check_login = $db->prepare("SELECT * FROM users WHERE id = ?");
                         $check_login->execute(array($confirmnewlogin));
                         $login_info = $check_login->rowCount();
+                        $ret = "New login has been updated successfully";
                     }
                     catch (PDOexception $e)
                     {

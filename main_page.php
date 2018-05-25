@@ -32,9 +32,9 @@ include "config/setup.php";
                         </div>
 <!--                         <div class="separator"></div> -->
                         <div class="cam">
-                            <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takeSnapshot()"/></a>
-                            <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo" onClick="deleteSnapshot()"/></a> 
-                            <a id="savesnapshot"><img src="img/check.png" alt="save" class="cam-logo" onClick="saveSnapshot()"/></a>
+                            <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takepicture()"/></a>
+                            <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo" onClick="deletepicture()"/></a> 
+                            <a id="savesnapshot"><img src="img/check.png" alt="save" class="cam-logo" onClick="savepicture()"/></a>
                         </div>
                     </div>
                 </div>

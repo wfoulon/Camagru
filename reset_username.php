@@ -30,7 +30,7 @@ include "script/reset.php";
                         <input style="text-align:center" type="text" class="input" name="confirmnewlogin" onblur="verif_login(this)" required>
                     <br />
                     <div align="center">
-                        <input type="submit" name="button" value="Change login" class="button" />
+                        <input type="submit" name="user" value="Change login" class="button" />
                     </div>
                 </form>
             </div>
