@@ -82,9 +82,11 @@ body {
     font-weight: 100;
 }
 
-#canvas, #video{
+#video{
 /*     height: auto; */
     display: block;
+    width: 500px;
+    height: 380px;
 }
 
 #video{
@@ -92,11 +94,9 @@ body {
     border-radius: 15px;
 }
 
-#imageTaken{
+#canvas{
     display: none;
 /*     max-width: 80%; */
-    width: 640px;
-    height: 480px;
     border: 10px groove dodgerblue;
     border-radius: 15px;
 }
@@ -106,7 +106,7 @@ body {
     border-radius: 15px;
     margin: 10px;
     background-color: lightskyblue;
-    width: 640px;
+    width: 500px;
 }
 
 .cam-logo{
@@ -149,7 +149,7 @@ body {
         margin-top: 50px;
     }
 
-    #imagetaken{
+    #canvas{
         width: 250px !important;
         height: 190px !important;
         margin-top: 50px;

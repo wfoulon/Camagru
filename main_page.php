@@ -27,16 +27,14 @@ include "config/setup.php";
                 <div class="site-content">
                     <div class="container" align="center">
                         <div class="vid">
-                            <video id="video" autoplay="true"></video>
-<!--                              <img id="imageTaken"/> -->
+                            <video id="video"></video>
+                            <canvas id="canvas" style="display: none;"></canvas>
                         </div>
-<!--                         <div class="separator"></div> -->
                         <div class="cam">
-                            <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takeSnapshot()"/></a>
-                            <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo" onClick="deletepicture()"/></a> 
-                            <a id="savesnapshot"><img src="img/check.png" alt="save" class="cam-logo" onClick="savepicture()"/></a>
+                            <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takepicture()"/></a>
+                            <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo"/></a> 
+                            <a id="save"><img src="img/check.png" alt="save" class="cam-logo" onClick="removepicture()"/></a>
                         </div>
-<!--                         <canvas></canvas> -->
                     </div>
                 </div>
             </div>
@@ -48,6 +46,6 @@ include "config/setup.php";
                 </div>
             </footer>
         </div>
-        <script language="javascript" src="js/camera.js"></script>
+        <script type="text/javascript" src="js/camera.js"></script>
     </body>
 </html>
