@@ -23,11 +23,11 @@
     })
     video.addEventListener('canplay', function(ev) {
         if (!streaming) {
-            height = video.videoHeight / (video.videoWidth / width);
+/*             height = video.videoHeight / (video.videoWidth / width);
             video.setAttribute('width', width);
             video.setAttribute('height', height);
             canvas.setAttribute('width', width);
-            canvas.setAttribute('height', height);
+            canvas.setAttribute('height', height); */
             streaming = true;   
         }
     }, false);
@@ -46,14 +46,14 @@
 
     function removepicture() {
         canvas.style.diplay = "none";
-        video.style.display = "block"
+        video.style.display = "block";
     };
     
-    cross.addEventListener('click', function(ev) {
+/*     cross.addEventListener('click', function(ev) {
         removepicture();
         save.disabled = true;
         ev.preventDefault();
-    }, false);
+    }, false); */
 
     startbutton.addEventListener('click', function(ev) {
         takepicture();
@@ -61,10 +61,10 @@
         ev.preventDefault();
     }, false);
 
-    retry.addEventListener("click", function (ev) {
+/*     retry.addEventListener("click", function (ev) {
         cross.click();
         ev.preventDefault();
-    }, false);
+    }, false); */
 /*     startbutton.dispatchEvent(event);
     cross.dispatchEvent(event); */
 //};
