@@ -30,7 +30,8 @@ catch(PDOException $e){
                             );";
             $req_users_table = $db->prepare($users_table);
             $req_users_table->execute();
-        
+            
+            /* post table */
             $post_table = "CREATE TABLE IF NOT EXISTS post(
                             `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
                             `login` VARCHAR(255) NOT NULL,
@@ -41,6 +42,25 @@ catch(PDOException $e){
                             );";
             $req_post_table = $db->prepare($post_table);
             $req_post_table->execute();
+
+            /* likes table */
+            $like_table = "CREATE TABLE IF NOT EXISTS likes(
+                            `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                            `login` VARCHAR(255) NOT NULL,
+                            PRIMARY KEY(`id`)
+                            );";
+            $req_like_table = $db->prepare($like_table);
+            $req_like_table->execute();
+
+            /* Comments table */
+            $comment_table = "CREATE TABLE IF NOT EXISTS comments(
+                                `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                                `login` VARCHAR(255) NOT NULL,
+                                `text` VARCHAR(255),
+                                PRIMARY KEY (`id`)
+                                );";
+            $req_comment_table = $db->prepare($comment_table);
+            $req_comment_table->execute();
         }        
     }
     catch(PDOException $e){

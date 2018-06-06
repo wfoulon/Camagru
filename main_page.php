@@ -35,7 +35,17 @@ include "config/setup.php";
                             <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takepicture()"/></a>
                             <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo"/></a> 
                             <a id="save"><img src="img/check.png" alt="save" class="cam-logo" onClick="removepicture()"/></a>
-                        </div>                       
+                            <form method="post" action="script/upload.php" enctype="multipart/form-data">
+                                <input type="file" name="img"/>
+                                <input type="submit" value="upload" name="submit"/>
+                            </form>
+                            <?php
+                                if (isset($ret))
+                                {
+                                    echo $ret;
+                                }
+                            ?>
+                        </div>                      
                     </div>
                 </div>
             </div>
