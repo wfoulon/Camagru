@@ -1,4 +1,3 @@
-/* function loadMedia(){ */
     let streaming = false,
         video = document.querySelector('#video'),
         cover = document.querySelector('#cover'),
@@ -105,7 +104,7 @@ function dropHandler(ev) {
 	if (canvas.style.display === 'none') {
         let canvas = document.querySelector('#canvas'),
         startbutton = document.getElementById('startbutton');
-		let data = event.dataTransfer.items;
+		let data = ev.dataTransfer.items;
 		for (let i = 0; i < data.length; i += 1) {
 		if ((data[i].kind == 'file') && (data[i].type.match('^image/'))) {
 			let f = data[i].getAsFile();
