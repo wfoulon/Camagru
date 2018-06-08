@@ -118,6 +118,54 @@ body {
     filter: invert(100);
 }
 
+.collage-content{
+    display: inline-flex;
+    width: 500px;
+    overflow: scroll;
+    background-color: dimgrey;
+    border-radius: 10px;
+}
+
+.mask img{
+    width: 150px;
+}
+
+.content {
+    display: inline-block;
+    width: auto;
+    height: auto;
+}
+
+.MaskContent {
+    /* display: inline-block; */
+    position: absolute;
+    top: 0;
+    /* left: 31%; */
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 500px;
+    height: 380px;
+}
+
+.vid {
+    height: 400px;
+}
+
+.VideoMask {
+    position: absolute;
+}
+
+.VideoMask img {
+    width: 100px;
+}
+
+.cam a {
+    display: inline-block;
+    width: auto;
+    height: auto;
+}
+
+
 @media only screen and (max-width: 830px) {
     .menu-buttons {
         display: block !important;
@@ -129,6 +177,7 @@ body {
     .menu-buttons a {
         margin: 20px !important;
     }
+
     .menu-buttons a img {
         width: 25px;
         height: 25px;
@@ -146,7 +195,7 @@ body {
     #video{
         width: 250px !important;
         height: 190px !important;
-        margin-top: 50px;
+        /* margin-top: 50px; */
     }
 
     #canvas{
@@ -157,5 +206,36 @@ body {
 
     .cam{
         width: 250px !important;
+        position: relative !important;
+    }
+    
+    .cam img {
+        width: 25px !important;
+    }
+
+    .collage-content{
+        width: 250px !important;
+        overflow: scroll !important;
+    }
+
+    .mask img{
+        width: 75px !important;
+    }
+
+    .MaskContent {
+        width: 250px !important;
+        height: 190px !important;
+        left: 30% !important;
+    }
+    
+    .vid {
+        height: 190px !important;
+    }
+}
+
+@media only screen and (max-width: 375px)
+{
+    .upload{
+        display: none;
     }
 }

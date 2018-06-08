@@ -28,24 +28,61 @@ include "config/setup.php";
                 <div class="site-content">
                     <div class="container" align="center">
                         <div class="vid">
-                            <video id="video"></video>
-                            <canvas id="canvas" style="display: none;"></canvas>
+                        <div class="Content" id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                            <div class="Content">
+                                <video id="video"></video>
+                                <canvas id="canvas" style="display: none;"></canvas>
+                                <div class="MaskContent">
+                                    <div class="VideoMask" style="display: none; left: 45%;">
+                                        <img src="contents/16.png" />
+                                    </div>
+                                    <div class="VideoMask" style="display: none;bottom: 2px;left: 45%;">
+                                        <img src="contents/2.png" />
+                                    </div>
+                                    <div class="VideoMask" style="display: none;left: 45%; bottom: 35%;">
+                                        <img src="contents/14.png" />
+                                    </div>
+                                    <div class="VideoMask" style="display: none">
+                                        <img src="contents/20.png" />
+                                    </div>
+                                    <div class="VideoMask" style="display: none; right:0; bottom:0;">
+                                        <img src="contents/21.png" />
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                         <div class="cam">
+                            <br />
+                            <input id="namePic" style="width: 60%" placeholder="Name for the pic"></input>
+                            <br />
                             <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takepicture()"/></a>
                             <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo"/></a> 
-                            <a id="save"><img src="img/check.png" alt="save" class="cam-logo" onClick="removepicture()"/></a>
-                            <form method="post" action="script/upload.php" enctype="multipart/form-data">
-                                <input type="file" name="img"/>
-                                <input type="submit" value="upload" name="submit"/>
-                            </form>
-                            <?php
-                                if (isset($ret))
-                                {
-                                    echo $ret;
-                                }
-                            ?>
-                        </div>                      
+                            <a id="save"><img src="img/check.png" alt="save" class="cam-logo" onClick="savepicture()"/></a>
+                        </div>
+                        <div id="collage-content" class="collage-content">
+                            <div class="collage-items">
+                                <div class="mask"><img src="contents/16.png"></div>
+                            </div>
+                            <div class="collage-items">
+                                <div class="mask"><img src="contents/2.png"></div>
+                            </div>
+                            <div class="collage-items">
+                                <div class="mask"><img src="contents/14.png"></div>
+                            </div>
+                            <div class="collage-items">
+                                <div class="mask"><img src="contents/20.png"></div>
+                            </div>    
+                            <div class="collage-items">
+                                <div class="mask"><img src="contents/21.png"></div>
+                            </div>
+                        </div> 
+                        <?php
+                            if (isset($ret))
+                            {
+                                echo $ret;
+                            }
+                        ?>                      
                     </div>
                 </div>
             </div>
