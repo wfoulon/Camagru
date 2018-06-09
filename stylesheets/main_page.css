@@ -225,11 +225,14 @@ body {
     .MaskContent {
         width: 250px !important;
         height: 190px !important;
-        left: 30% !important;
     }
     
     .vid {
         height: 190px !important;
+    }
+
+    .VideoMask img{
+        width: 50px !important;
     }
 }
 

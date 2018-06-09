@@ -2,8 +2,8 @@
 set_include_path("../");
 include 'config/database.php';
 session_start();
-$bdd = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-echo $_POST['name'];
+$db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+/* echo $_POST['name']; */
 if (isset($_POST['img']) && isset($_POST['all']) && isset($_POST['name'])) {
     $img = htmlspecialchars($_POST['img']);
     $name = htmlspecialchars($_POST['name']);
@@ -92,7 +92,7 @@ if (isset($_POST['img']) && isset($_POST['all']) && isset($_POST['name'])) {
                 $date = date('Y-m-j H:i:s');
                 $id = $_SESSION['id'];
                 try {
-                    $req = $bdd->prepare("INSERT INTO post(`login`, `creation_date`, `link`, `name`) VALUES(:login, :date, :link, :name);");
+                    $req = $db->prepare("INSERT INTO post(`login`, `creation_date`, `link`, `name`) VALUES(:login, :date, :link, :name);");
                     $res = $req->execute(array('login' => $id, 'date' => $date, 'link' => $path, 'name' => $name));
                 }
                 catch(PDOException $e){

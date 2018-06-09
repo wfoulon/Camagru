@@ -1,5 +1,6 @@
 <?php
-include 'script/reset.php'
+include 'script/reset.php';
+include "script/security.php";
 ?>
 
 <html>

@@ -1,6 +1,6 @@
 <?php
-session_start();
 include 'script/reset.php';
+include "script/security.php";
 ?>
 
 <html>
