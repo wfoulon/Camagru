@@ -1,0 +1,127 @@
+.display{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border: 10px groove dodgerblue;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.namepic{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: dodgerblue;
+    font-size: 30px;
+}
+
+.pb{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+/*     color: dodgerblue; */
+}
+
+.time {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+/*     color: dodgerblue; */
+}
+
+.num{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.test1{
+    color: dodgerblue;
+}
+
+.test{
+    color: rgb(201, 91, 91);
+}
+
+.site-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+@media only screen and (max-width: 1040px){
+    .display{
+        margin-left: 250px;
+    }
+}
+
+@media only screen and (max-width: 770px){
+    .display{
+        padding: 0px !important;
+    }
+
+    .display img{
+        width: 200px;
+    }
+
+    .namepic{
+        font-size: 20px;
+    }
+
+    .pb, .time, .num{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 649px){
+    .display{
+        margin-left: 150px;
+    }
+}
+
+@media only screen and (max-width: 475px){
+    .display{
+        margin-left: 65px;
+    }
+}
+
+@media only screen and (max-width: 414px){
+    .display{
+        margin-left: 50px;
+    }
+}
+
+
+@media only screen and (max-width: 390px){
+    .display{
+        margin-left: 45px;
+    }
+}
+
+@media only screen and (max-width: 375px){
+    .display{
+        margin-left: 65px;
+    }
+    
+    .display img {
+        width: 150px;
+    }
+
+    .namepic{
+        font-size: 15px;
+    }
+
+    .pb, .time, .num{
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    .display{
+        margin-left: 62px;
+    }
+}
+
+@media only screen and (max-width: 320px){
+    .display{
+        margin-left: 40px;
+    }
+}

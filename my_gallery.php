@@ -12,6 +12,7 @@ include "script/security.php";
         <link href="stylesheets/my_gallery.css" rel ="stylesheet">
         <link rel="icon" type="image/png" href="img/homelogo.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
     <body>
         <div class="site-container">
@@ -28,15 +29,13 @@ include "script/security.php";
                 <div class="site-content">
                     <?php
                         include "script/display_gallery.php";
+                        if (isset($ret))
+                        {
+                            echo $ret;
+                        }
                     ?>
                 </div>
             </div>
-<!--             <footer class="footer">
-                <div class="copyright">
-                    Copyright © 2018 - Tous droits réservés.
-                    Contact: wfoulon@student.42.fr
-                </div>       
-            </footer> -->
         </div>
     </body>
 </html>
