@@ -27,8 +27,10 @@
         }
     }, false);
 
+    // Secure the name of the picture with a regex
     input.addEventListener('keyup', function(){if (this.value.length !== 0 && regname.test(this.value)) {save.style.cursor = 'pointer'; input.style.borderColor = 'rgb(238, 238, 238)';} else {save.style.cursor = 'not-allowed';}})
 
+    //function retry picture
     function retryYolo() {
         canvas.style.display = "none";
         video.style.display = "block";
@@ -44,6 +46,7 @@
         }
     }
     
+    //Save picture with mask
     function savepicture() {
         if (input.value.length !== 0 && regname.test(input.value)) {
             if (canvas.style.display === 'block') {
@@ -95,6 +98,7 @@
         video.style.display = "block";
     };
 
+    // Event takepicture
     startbutton.addEventListener('click', function(ev) {
         takepicture();
         save.disabled = false;
@@ -122,7 +126,7 @@ function printMask(i) {
 
 // End mask
 
-//Subfile
+//Subfile with drag and drop
 
 function dropHandler(ev) {
 	ev.preventDefault();

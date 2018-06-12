@@ -42,19 +42,13 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     align-content: center;
 }
 
 a {
     text-decoration: none;
-}
-
-@media only screen and (max-width: 1040px){
-    .display{
-        margin-left: 250px;
-    }
 }
 
 @media only screen and (max-width: 770px){
@@ -75,36 +69,7 @@ a {
     }
 }
 
-@media only screen and (max-width: 649px){
-    .display{
-        margin-left: 150px;
-    }
-}
-
-@media only screen and (max-width: 475px){
-    .display{
-        margin-left: 65px;
-    }
-}
-
-@media only screen and (max-width: 414px){
-    .display{
-        margin-left: 50px;
-    }
-}
-
-
-@media only screen and (max-width: 390px){
-    .display{
-        margin-left: 45px;
-    }
-}
-
 @media only screen and (max-width: 375px){
-    .display{
-        margin-left: 65px;
-    }
-    
     .display img {
         width: 150px;
     }
@@ -115,17 +80,5 @@ a {
 
     .pb, .time, .num{
         font-size: 10px;
-    }
-}
-
-@media only screen and (max-width: 360px){
-    .display{
-        margin-left: 62px;
-    }
-}
-
-@media only screen and (max-width: 320px){
-    .display{
-        margin-left: 40px;
     }
 }
