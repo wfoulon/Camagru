@@ -1,6 +1,6 @@
 <?php
+session_start();
 include "config/setup.php";
-include "script/security.php";
 ?>
 
 <html>

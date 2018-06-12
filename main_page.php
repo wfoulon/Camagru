@@ -52,13 +52,13 @@ include "script/security.php";
                             </div>
                             </div>
                         </div>
-                        <div class="cam">
+                        <div id='save-all' class="cam">
                             <br />
                             <input id="namePic" style="width: 60%" placeholder="Name for the pic"></input>
                             <br />
                             <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takepicture()"/></a>
                             <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo"/></a> 
-                            <a id="save"><img src="img/check.png" alt="save" class="cam-logo" onClick="savepicture()"/></a>
+                            <a><img id="save" style="cursor: not-allowed;" src="img/check.png" alt="save" class="cam-logo" onClick="savepicture()"/></a>
                         </div>
                         <div id="collage-content" class="collage-content">
                             <div class="collage-items">
@@ -76,13 +76,16 @@ include "script/security.php";
                             <div class="collage-items">
                                 <div class="mask"><img src="contents/21.png"></div>
                             </div>
-                        </div> 
+                        </div>                  
+                    </div>
+                    <div class="flex-box">
                         <?php
+                            include "script/display_miniature.php";
                             if (isset($ret))
                             {
                                 echo $ret;
                             }
-                        ?>                      
+                        ?>
                     </div>
                 </div>
             </div>
@@ -95,5 +98,6 @@ include "script/security.php";
             </footer>
         </div>
         <script type="text/javascript" src="js/camera.js"></script>
+        <script type="text/javascript" src="js/function.js"></script>
     </body>
 </html>

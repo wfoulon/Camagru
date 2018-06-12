@@ -6,6 +6,8 @@
         retry = document.getElementById("deletesnap"),
         save = document.querySelector("#save"),
         upload = document.getElementById('subFile'),
+        input = document.getElementById('namePic'),
+        regname = new RegExp('^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$')
         constraints = {
             audio: false,
             video: true,
@@ -25,6 +27,8 @@
         }
     }, false);
 
+    input.addEventListener('keyup', function(){if (this.value.length !== 0 && regname.test(this.value)) {save.style.cursor = 'pointer'; input.style.borderColor = 'rgb(238, 238, 238)';} else {save.style.cursor = 'not-allowed';}})
+
     function retryYolo() {
         canvas.style.display = "none";
         video.style.display = "block";
@@ -41,26 +45,47 @@
     }
     
     function savepicture() {
-        if (canvas.style.display === 'block') {
-            let data = canvas.toDataURL('image/png'),
-                videoMasks = document.querySelectorAll(".VideoMask"),
-                name = document.getElementById('namePic').value,
-                mask = {};
-            for (let i = 0; i < videoMasks.length; i++) {
-                    mask[i] = videoMasks[i].style.display;
-            }
-            mask = JSON.stringify(mask)
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-                    let resp = xhr.responseText;
-                    console.log(resp)
+        if (input.value.length !== 0 && regname.test(input.value)) {
+            if (canvas.style.display === 'block') {
+                let data = canvas.toDataURL('image/png'),
+                    videoMasks = document.querySelectorAll(".VideoMask"),
+                    name = document.getElementById('namePic').value,
+                    mask = {};
+                for (let i = 0; i < videoMasks.length; i++) {
+                        mask[i] = videoMasks[i].style.display;
                 }
-            };
-            xhr.open('POST', "script/savepic.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("img=" + data + "&all=" + mask + "&name=" + name);
+                mask = JSON.stringify(mask)
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+                        let resp = xhr.responseText;
+                        if (resp != '0' && resp != '1') {
+                            let div = document.createElement('div')
+                            let img = document.createElement('img')
+                            div.className = 'min';
+                            img.src = 'pictures/' + resp
+                            div.appendChild(img)
+                            let main = document.getElementsByClassName('flex-box')
+                            main[0].appendChild(div)
+                        }
+                        if (resp === '0') {
+                            let name = document.getElementById('save-all')
+                            let span = document.getElementById('selectMask')
+                            if (!span)
+                                name.innerHTML += "<br /><span id='selectMask'><strong>Please select at least one mask !!!!!!!!!!!!!</strong></span>"
+                        }
+                        if (resp === '1') {
+                            input.style.borderColor = 'red';
+                        }
+                    }
+                };
+                xhr.open('POST', "script/savepic.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("img=" + data + "&all=" + mask + "&name=" + name);
+            }
         }
+        else
+         input.style.borderColor = 'red';
     }
 
     function removepicture() {

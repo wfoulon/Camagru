@@ -47,6 +47,10 @@
     align-content: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 1040px){
     .display{
         margin-left: 250px;

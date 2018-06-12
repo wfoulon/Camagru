@@ -1,0 +1,22 @@
+.site-content{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.pic{
+    border: 10px groove dodgerblue;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.test{
+    color: red;
+}
+
+.test1{
+    color: dodgerblue;
+}

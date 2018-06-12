@@ -18,10 +18,21 @@ if (!$req_info)
 else{
     foreach($req_info as $key => $value)
     {
+        try {
+            $req_login = $db->prepare("SELECT login FROM users WHERE id = :login");
+            $req_login->execute(array('login' => $value['login']));
+            $login_info = $req_login->fetchAll();
+        }
+        catch (PDOexception $e)
+        {
+            print "ERROR! The mistake comes from: ".$e->getMessage()."";
+            die();
+        }
+        
         $link = explode('/', $value['link'])[2];
-        echo '<div class="display"><img src="pictures/'.$link.'"/>'; 
-        echo '<div class="namepic">'.$value['name'].'</div>';
-        echo '<div class="pb">Posted by: '.$_SESSION['login'].'</div>';
+        echo '<div class="display"><img src="pictures/'.$link.'"/>';
+        echo '<a href="likes_comments.php?picture='.$link.'"><div class="namepic">'.$value['name'].'</div></a>';
+        echo '<div class="pb">Posted by: '.$login_info[0]['login'].'</div>';
         echo '<div class="time"> Uploaded on: '.$value['creation_date'].'</div>';
         echo '<div class="num"><i class="test1 fas fa-comments fa-2x"></i>'.$value['nb_comments'].'</div>';
         echo '<div class="num"><i class="test fas fa-heart fa-2x"></i>'.$value['nb_likes'].'</div>';

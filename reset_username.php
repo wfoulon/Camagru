@@ -1,6 +1,10 @@
 <?php
+session_start();
 include "script/reset.php";
-include "script/security.php";
+if (!$_SESSION['password'])
+{
+    header("Location: index.php");
+}
 ?>
 
 <html>

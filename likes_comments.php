@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "config/setup.php";
 ?>
 <html>
 <head>
@@ -7,6 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>My Gallery</title>
     <link href="stylesheets/main_page.css" rel="stylesheet">
+    <link href="stylesheets/likes_comments.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/homelogo.png">
     <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
