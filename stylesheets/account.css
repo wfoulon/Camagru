@@ -3,6 +3,7 @@
     border-radius: 15px;
     border: 10px groove dodgerblue;
     font-size: 25px;
+    margin-bottom: 80px;
 }
 
 .pswd, .eml, .delete, .name{
