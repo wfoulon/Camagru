@@ -50,6 +50,7 @@ catch(PDOException $e){
                 $like_table = "CREATE TABLE IF NOT EXISTS likes(
                                 `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
                                 `login` VARCHAR(255) NOT NULL,
+                                `id_picture` INT NOT NULL,
                                 PRIMARY KEY(`id`)
                                 );";
                 $req_like_table = $db->prepare($like_table);
@@ -59,7 +60,9 @@ catch(PDOException $e){
                 $comment_table = "CREATE TABLE IF NOT EXISTS comments(
                                     `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
                                     `login` VARCHAR(255) NOT NULL,
+                                    `id_picture` INT NOT NULL,
                                     `text` VARCHAR(255),
+                                    `creation_date` DATETIME,
                                     PRIMARY KEY (`id`)
                                     );";
                 $req_comment_table = $db->prepare($comment_table);

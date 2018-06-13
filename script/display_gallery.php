@@ -30,12 +30,32 @@ else{
         }
         
         $link = explode('/', $value['link'])[2];
+        try {
+            $req = $db->prepare('SELECT * FROM likes WHERE id_picture = :id');
+            $res = $req->execute(array('id' => $value['id']));
+            $res = $req->fetchAll();
+        }
+        catch(PDOException $e) {
+            die('Error:' . $e);
+        }
+        $nb = count($res);
+        try {
+            $req = $db->prepare('SELECT * FROM comments WHERE id_picture = :id');
+            $res = $req->execute(array('id' => $value['id']));
+            $res = $req->fetchAll();
+        }
+        catch(PDOException $e) {
+            die('Error:' . $e);
+        }
+        $nbcom = count($res);
         echo '<div class="display"><img src="pictures/'.$link.'"/>';
         echo '<a href="likes_comments.php?picture='.$link.'"><div class="namepic">'.$value['name'].'</div></a>';
         echo '<div class="pb">Posted by: '.$login_info[0]['login'].'</div>';
         echo '<div class="time"> Uploaded on: '.$value['creation_date'].'</div>';
-        echo '<div class="num"><i class="test1 fas fa-comments fa-2x"></i>'.$value['nb_comments'].'</div>';
-        echo '<div class="num"><i class="test fas fa-heart fa-2x"></i>'.$value['nb_likes'].'</div>';
+        echo '<div class="icn">';
+        echo '<div class="num"><i class="test1 fas fa-comments fa-2x"></i>'.$nbcom.'</div>';
+        echo '<div class="num"><i class="test fas fa-heart fa-2x"></i>'.$nb.'</div>';
+        echo '</div>';
         echo '</div>';
     }
 }

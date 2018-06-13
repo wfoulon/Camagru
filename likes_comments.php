@@ -10,7 +10,6 @@ include "config/setup.php";
     <link href="stylesheets/main_page.css" rel="stylesheet">
     <link href="stylesheets/likes_comments.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/homelogo.png">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body>
@@ -29,6 +28,13 @@ include "config/setup.php";
                 <?php
                     include "script/exchange.php";
                 ?>
+                <a class="back" href="my_gallery.php">Back</a>
+                <?php
+                if (isset($ret))
+                {
+                    echo $ret;
+                }
+            ?>
             </div>
         </div>
         <footer class="footer">
@@ -38,5 +44,6 @@ include "config/setup.php";
             </div>
         </footer>
     </div>
+    <script type="text/javascript" src="js/like.js"></script>
 </body>
 </html>

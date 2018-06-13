@@ -18,7 +18,6 @@ include "script/security.php";
                 <header class="header">
                     <img id="logo-menu" src="img/logo.png" alt="logo"/>
                         <div class="menu-buttons">
-<!--                             <a href="feed.php"><img class="menu-btn" src="img/feed.png" alt="feed"/></a> -->
                             <a href="my_gallery.php"><img class="menu-btn" src="img/mygallery.png" alt="mygallery"/></a>
                             <a href="main_page.php"><img class="menu-btn" src="img/post.png" alt="post"/></a>
                             <a href="account.php"><img class="menu-btn" src="img/account.png" alt="account"/></a>

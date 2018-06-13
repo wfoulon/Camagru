@@ -59,8 +59,10 @@
                 }
                 mask = JSON.stringify(mask)
                 let xhr = new XMLHttpRequest();
+                // Call a function when the state changes
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+                        // Request finished. Doing process here
                         let resp = xhr.responseText;
                         if (resp != '0' && resp != '1') {
                             let div = document.createElement('div')
@@ -91,12 +93,12 @@
          input.style.borderColor = 'red';
     }
 
-    function removepicture() {
+/*     function removepicture() {
         let  canvas = document.querySelector('#canvas'),
         video = document.getElementById('video');
         canvas.style.display = "none";
         video.style.display = "block";
-    };
+    }; */
 
     // Event takepicture
     startbutton.addEventListener('click', function(ev) {
@@ -107,11 +109,13 @@
 
 // Mask
 
+//Event on click Mask
 let allMask = document.querySelectorAll(".collage-items div img")
 for(let i = 0; i <  allMask.length; i++) {
     allMask[i].addEventListener("click", function(e){e.preventDefault; printMask(i)})
 }
 
+//Display Mask Dynamic mode
 function printMask(i) {
     let videoMasks = document.querySelectorAll(".VideoMask")
     if (videoMasks[i].style.display === 'none') {

@@ -54,7 +54,7 @@ include "script/security.php";
                         </div>
                         <div id='save-all' class="cam">
                             <br />
-                            <input id="namePic" style="width: 60%" placeholder="Name for the pic"></input>
+                            <input id="namePic" style="width: 60%" placeholder="Name of the pic"></input>
                             <br />
                             <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takepicture()"/></a>
                             <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo"/></a> 

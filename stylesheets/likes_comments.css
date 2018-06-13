@@ -5,6 +5,7 @@
     align-content: center;
     align-items: center;
     justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .pic{
@@ -19,4 +20,47 @@
 
 .test1{
     color: dodgerblue;
+}
+
+.icn{
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-width: 200px;
+    justify-content: space-around;
+}
+
+.comments textarea{
+    width: 500px;
+    height: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.button{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(dodgerblue, dodgerblue);
+    background-color: darkblue;
+    color: #fff;
+    border-radius: 8px;
+    height: 35px;
+    min-width: 80px !important;
+    margin-top: 1rem;
+    margin: auto;
+}
+
+#like {
+    cursor: pointer;
+}
+
+.back{
+    display: flex;
+    color: dodgerblue;
+    text-decoration: none;
+    font-size: 1.2rem;
 }

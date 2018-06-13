@@ -51,6 +51,14 @@ a {
     text-decoration: none;
 }
 
+.icn{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-width: 200px;
+    justify-content: space-around;
+}
+
 @media only screen and (max-width: 770px){
     .display{
         padding: 0px !important;
