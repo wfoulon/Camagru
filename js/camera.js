@@ -32,6 +32,7 @@
 
     //function retry picture
     function retryYolo() {
+        console.log('ici')
         canvas.style.display = "none";
         video.style.display = "block";
     }
@@ -74,10 +75,18 @@
                             main[0].appendChild(div)
                         }
                         if (resp === '0') {
-                            let name = document.getElementById('save-all')
+                            let name = document.getElementById('saveimg')
                             let span = document.getElementById('selectMask')
-                            if (!span)
-                                name.innerHTML += "<br /><span id='selectMask'><strong>Please select at least one mask !!!!!!!!!!!!!</strong></span>"
+                            if (!span) {
+                                let br = document.createElement('br');
+                                let span = document.createElement('span')
+                                span.id = 'selectMask';
+                                let strong = document.createElement('strong')
+                                strong.innerText = 'Please select at least one mask !!!!!!!!!!!!!'
+                                name.after(br)
+                                span.appendChild(strong)
+                                br.after(span)
+                            }
                         }
                         if (resp === '1') {
                             input.style.borderColor = 'red';
@@ -176,3 +185,30 @@ function removeDragData(ev) {
 };
 
 //end Subfile
+
+//Delete miniature
+
+let del = document.querySelectorAll('.del i')
+    for(let i = 0; i < del.length; i++){
+        del[i].addEventListener('click', () => {
+            deleteImg(del[i].id, i)
+        })
+    }
+
+let deleteImg = (id, i) => {
+    let all = document.querySelectorAll('.pic-cont')
+    let xhr = new XMLHttpRequest();
+    // Call a function when the state changes
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+            // Request finished. Doing process here 
+            let resp = xhr.responseText;
+            if (resp === 'good') {
+                all[i].remove();
+            }
+        }
+    };
+    xhr.open('POST', "script/delete.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send('deleteimg=' + id);
+}

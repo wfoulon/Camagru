@@ -11,14 +11,15 @@ include "script/security.php";
         <link href="stylesheets/main_page.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="img/homelogo.png">
         <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
     <body>
         <div class="site-container">
             <div class="site-pusher">
                 <header class="header">
-                    <img id="logo-menu" src="img/logo.png" alt="logo"/>
+                    <img id="logo-menu" onclick="window.location.href='index.php'" src="img/logo.png" alt="logo"/>
                         <div class="menu-buttons">
-                            <a href="my_gallery.php"><img class="menu-btn" src="img/mygallery.png" alt="mygallery"/></a>
+                            <a href="index.php"><img class="menu-btn" src="img/mygallery.png" alt="mygallery"/></a>
                             <a href="main_page.php"><img class="menu-btn" src="img/post.png" alt="post"/></a>
                             <a href="account.php"><img class="menu-btn" src="img/account.png" alt="account"/></a>
                             <a href="logout.php"><img class="menu-btn" src="img/logout.png" alt="logout"/></a>
@@ -58,7 +59,7 @@ include "script/security.php";
                             <br />
                             <a id="startbutton"><img src="img/cam.png" alt="camera" class="cam-logo" onClick="takepicture()"/></a>
                             <a id="deletesnap"><img src="img/erase.png" alt="delete" class="cam-logo"/></a> 
-                            <a><img id="save" style="cursor: not-allowed;" src="img/check.png" alt="save" class="cam-logo" onClick="savepicture()"/></a>
+                            <a id='saveimg'><img id="save" style="cursor: not-allowed;" src="img/check.png" alt="save" class="cam-logo" onClick="savepicture()"/></a>
                         </div>
                         <div id="collage-content" class="collage-content">
                             <div class="collage-items">

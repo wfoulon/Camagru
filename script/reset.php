@@ -282,12 +282,12 @@ function send_email($mail, $login)
     $destinataire = $mail;
 	$sujet = "Modification du mot de passe Camagru " .$login;
 	/* $entete = "From: inscription@votresite.com" ;*/
-	$host = exec("hostname -f");
+	$entete = "From: Camagru@42.fr";
 	/* Le lien d'activation est composé du login(log) et de la clé(cle) */
 	$message = 'Vous venez de demander la reinitialisation de votre mot de passe.
     Pour changer votre mot de passe cliquez sur le lien ci-dessous.
 			 
-	http://'.$host.':8080/Camagru/change_password.php?login='.$login.'
+	http://'.$_SERVER['HTTP_HOST'].'/Camagru/change_password.php?login='.$login.'
 			 
 			 
 	---------------

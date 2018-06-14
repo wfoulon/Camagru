@@ -16,19 +16,25 @@ include "config/setup.php";
     <div class="site-container">
         <div class="site-pusher">
             <header class="header">
-                <img id="logo-menu" src="img/logo.png" alt="logo"/>
+                <img id="logo-menu" onclick='window.location.href="index.php"' src="img/logo.png" alt="logo"/>
                     <div class="menu-buttons">
-                        <a href="my_gallery.php"><img class="menu-btn" src="img/mygallery.png" alt="mygallery"/></a>
+                        <a href="index.php"><img class="menu-btn" src="img/mygallery.png" alt="mygallery"/></a>
+                        <?php
+                            if (isset($_SESSION['login'])) { ?>
                         <a href="main_page.php"><img class="menu-btn" src="img/post.png" alt="post"/></a>
                         <a href="account.php"><img class="menu-btn" src="img/account.png" alt="account"/></a>
                         <a href="logout.php"><img class="menu-btn" src="img/logout.png" alt="logout"/></a>
+                            <?php }
+                            else { ?>
+                                <a href="connect.php"><img class="menu-btn" src="img/account.png" alt="logout"/></a>
+                            <?php }?>
                     </div>
             </header>
             <div class="site-content">
                 <?php
                     include "script/exchange.php";
                 ?>
-                <a class="back" href="my_gallery.php">Back</a>
+<!--                 <a class="back" href="index.php">Back</a> -->
                 <?php
                 if (isset($ret))
                 {

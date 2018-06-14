@@ -37,6 +37,7 @@ body {
     left: 10px;
     min-height: 80px;
     width: 200px;
+    cursor: pointer;
 }
 
 .menu-buttons {
@@ -263,4 +264,15 @@ body {
 
 input:focus {
     outline:  none;
+}
+
+.del {
+    position: absolute;
+    margin-top: -12px;
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+.pic-cont {
+    margin-top: 1.5rem;
 }

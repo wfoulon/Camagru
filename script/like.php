@@ -52,4 +52,82 @@ if (isset($_POST['like']) && isset($_SESSION['login'])) {
     echo $nb;
 }
 
+if (isset($_POST['comment']) && isset($_POST['id'])) {
+    $id = htmlspecialchars($_POST['id']);
+    $com = htmlspecialchars($_POST['comment']);
+    if (strlen($com) !== 0) {
+        try{
+            $prep = $db->prepare('SELECT * FROM post WHERE id=:id');
+            $prep->bindParam(':id', $id);
+            $prep->execute();
+            $req_pic = $prep->fetchAll();
+        }
+        catch (PDOexception $e)
+        {
+            print "ERROR!";
+            die();
+        }
+        if (count($req_pic) !== 0) {
+            $link = explode('/', $req_pic[0]['link'])[2];
+            $date = date('Y-m-j H:i:s');
+            $id_picture = $id;
+            $id = $_SESSION['id'];
+            try
+            {
+                $req = $db->prepare("INSERT INTO comments(`login`, `id_picture`, `text`, `creation_date`) VALUES(:login, :id_picture, :text, :creation_date);");
+                $res = $req->execute(array('login' => $id, 'id_picture' => $id_picture, 'text' => $com, 'creation_date' => $date));
+            }
+            catch (PDOexception $e)
+            {
+                print "ERROR!";
+                die();
+            }
+            try{
+                $prep = $db->prepare('SELECT * FROM comments WHERE id_picture=:id');
+                $prep->bindParam(':id', $id_picture);
+                $prep->execute();
+                $req_pic = $prep->fetchAll();
+            }
+            catch (PDOexception $e)
+            {
+                print "ERROR!";
+                die();
+            }
+            $mail = $_SESSION['email'];
+            $login = $_SESSION['login'];
+            send_email($mail, $login, $link);
+            $return['user'] = $_SESSION['login'];
+            $return['com'] = $com;
+            $return['nb'] = count($req_pic);
+            $return = json_encode($return);
+            echo $return;
+        }
+        else {
+            echo "ERROR!";
+        }
+    }
+    else
+        echo "ERROR!";
+}
+
+function send_email($mail, $login, $link)
+{
+    $destinataire = $mail;
+	$sujet = "Nouveau commentaire :" .$login;
+	$entete = "From: Camagru@42.fr" ;
+	/* Le lien d'activation est composé du login(log) et de la clé(cle) */
+    $message = 'Un nouveau commentaire a été ajouté à votre photo,
+    si vous souhaitez le consultez il vous suffit de cliquer sur le
+    lien suivant:
+			 
+	http://'.$_SERVER['HTTP_HOST'].'/Camagru/likes_comments.php?picture='.$link.'
+			 
+			 
+	---------------
+	Ceci est un mail automatique, Merci de ne pas y repondre.';
+
+	/* Envoi du mail */
+	mail($destinataire, $sujet, $message);
+}
+
 ?>

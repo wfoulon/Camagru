@@ -13,6 +13,8 @@ catch (PDOexception $e)
 }
 foreach($req_pic as $key => $value){
     $link = explode('/', $value['link'])[2];
-    echo '<div class="min"><img src="pictures/'.$link.'"/></div>';
+    echo '<div class="pic-cont"><div class="del"><i id="'.$value['id'].'" style="color:red" class="fas fa-times fa-2x"></i></div>';
+    echo '<div class="min"><img src="pictures/'.$link.'"/></div></div>';
+
 }
 ?>

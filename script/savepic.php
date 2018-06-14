@@ -101,7 +101,7 @@ if (isset($_POST['img']) && isset($_POST['all']) && isset($_POST['name'])) {
                     catch(PDOException $e){
                         die('Erreur : ' . $e->getMessage());
                     }
-                    echo explode('/', $path)[2];;
+                    echo explode('/', $path)[2];
                 }
             }
             else

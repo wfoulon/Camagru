@@ -142,7 +142,7 @@ function send_email($mail, $login, $token)
 {
     $destinataire = $mail;
 	$sujet = "Activer votre compte " .$login;
-	$entete = "From: Camagru@42.fr" ;
+	$entete = "From: Camagru@42.fr";
 /* 	$host = exec("hostname -f"); */
 	/* Le lien d'activation est composé du login(log) et de la clé(cle) */
 	$message = 'Bienvenue sur Camagru,
