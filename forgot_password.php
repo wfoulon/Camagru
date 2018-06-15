@@ -1,7 +1,7 @@
 <?php
-session_start();
 include 'script/reset.php';
-/* include "script/security.php"; */
+if (!isset($_GET['token']))
+    include "script/security.php";
 ?>
 
 <html>
@@ -11,23 +11,24 @@ include 'script/reset.php';
         <link href=stylesheets/index.css rel="stylesheet" />
         <link rel="icon" type="image/png" href="img/homelogo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Reset Password</title>
+        <title>Change Password</title>
     </head>
     <body>
         <div class="page-container" align="center">
             <div class="form-content">
                 <img text-align="center" src="img/locked.png" alt="logo_user" class="img_form" />
                 <script language="javascript" src="js/function.js"></script>
-                <div class="title">Change password</div>
+                <div class="title">Modify password</div>
                 <form align="center" method="POST" action="" class="form" autocomplete="off">
-                    <div class="item">Login</div>
-                        <input style="text-align:center" type="text" name="login" class="input" onblur="verif_login(this)" required/>
+                    <div class="item">New password</div>
+                        <input style="text-align:center;" class="input" type="password" name="newpassword" onblur="verif_password(this)" required />
                     <br>
-                    <div class="item">Email</div>
-                        <input style="text-align:center" type="email" name="email" class="input" onblur="verif_email(this)" required/>
+                    <div class="item">Confirmation</div>
+                        <input style="text-align:center;" class="input" type="password" name="confirmnewpassword" onblur="verif_password(this)" required/>
                     <br>
+                    <input name='token' type-"text" style="display: none" value='<?php echo $_GET['token'] ?>' />
                     <div align="center">
-                        <input type="submit" name="button" value="Send mail" class="button" />
+                        <input type="submit" name="psd" value="Change password" class="button" />
                     </div>
                 </form>
             </div>

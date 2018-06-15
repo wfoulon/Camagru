@@ -58,7 +58,58 @@ if (isset($_POST['button']) == "Send mail")
 if (isset($_POST['psd']) == "Change password")
 {
     $db = new PDO($DB_DSN.";dbname=".$DB_NAME, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    if (!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['newpassword']) && !empty($_POST['confirmnewpassword']))
+    if (isset($_POST['token']) && isset($_POST['confirmnewpassword']) && isset($_POST['newpassword'])) {
+        $token = htmlspecialchars($_POST['token']);
+        if (preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/", $_POST['newpassword']))
+        {
+            if (preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/", $_POST['confirmnewpassword']))
+            {
+                $newpsd = hash("whirlpool", htmlentities($_POST['newpassword']));
+                $confnewpsd = hash("whirlpool", htmlentities($_POST['confirmnewpassword']));
+                try
+                {
+                    $user_req = $db->prepare("SELECT * FROM users WHERE token = :token");
+                    $user_req->execute(array('token' => $token));
+                    $user_info = count($user_req->fetchAll());
+                }
+                catch (PDOexception $e)
+                {
+                    print "ERROR! The mistake comes from: ".$e->getMessage()."";
+                    die();
+                }
+                if ($user_info !== 0)
+                {
+                    if ($newpsd == $confnewpsd)
+                    {
+                        try
+                        {
+                            $change_psd = $db->prepare("UPDATE users SET password = :pwd, token = '0' WHERE token = :token");
+                            $change_psd->execute(array('pwd' => $newpsd, 'token' => $token));
+                            $ret = "Password has been updated successfully";
+                        }
+                        catch (PDOexception $e)
+                        {
+                            print "ERROR! the mistake comes from: ".$e->getMessage()."";
+                            die();
+                        }
+                    }
+                    else{
+                        $ret = "Passwords doesn't match. Please try again";
+                    }
+                }
+                else {
+                    $ret = "Incorrect login or email";
+                }
+            }
+            else{
+                $ret = "Password isn't valid, you must have at least eight characters, one uppercase letter, one lowercase letter and one number";
+            }
+        }
+        else{
+            $ret = "Password isn't valid, you must have at least eight characters, one uppercase letter, one lowercase letter and one number";
+        }
+    }
+    else if (!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['newpassword']) && !empty($_POST['confirmnewpassword']))
     {
         if (preg_match("/^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/", $_POST['login']))
         {
@@ -279,7 +330,9 @@ if (isset($_POST['user']) == "Change login")
 
 function send_email($mail, $login)
 {
+    include 'config/setup.php';
     $destinataire = $mail;
+    $token = md5(uniqid(rand()));
 	$sujet = "Modification du mot de passe Camagru " .$login;
 	/* $entete = "From: inscription@votresite.com" ;*/
 	$entete = "From: Camagru@42.fr";
@@ -287,14 +340,20 @@ function send_email($mail, $login)
 	$message = 'Vous venez de demander la reinitialisation de votre mot de passe.
     Pour changer votre mot de passe cliquez sur le lien ci-dessous.
 			 
-	http://'.$_SERVER['HTTP_HOST'].'/Camagru/change_password.php?login='.$login.'
+	http://'.$_SERVER['HTTP_HOST'].'/Camagru/forgot_password.php?token='.$token.'
 			 
 			 
 	---------------
 	Ceci est un mail automatique, Merci de ne pas y repondre.';
 
 	/* Envoi du mail */
-	mail($destinataire, $sujet, $message);
+    mail($destinataire, $sujet, $message);
+    try {
+        $req = $db->query("UPDATE users SET token = '".$token."';");
+    }
+    catch(PDOException $e) {
+        die('ERROR!');
+    }
 }
 
 ?>

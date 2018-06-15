@@ -40,7 +40,7 @@ include "script/security.php";
                                     <div class="VideoMask" style="display: none;bottom: 2px;left: 45%;">
                                         <img src="contents/2.png" />
                                     </div>
-                                    <div class="VideoMask" style="display: none;left: 45%; bottom: 35%;">
+                                    <div class="VideoMask" style="display: none;left: 45%; bottom: 25%;">
                                         <img src="contents/14.png" />
                                     </div>
                                     <div class="VideoMask" style="display: none">

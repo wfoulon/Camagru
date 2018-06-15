@@ -7,8 +7,8 @@ if (isset($_POST['like']) && isset($_SESSION['login'])) {
     $id = $_SESSION['id'];
     $pid = htmlentities($_POST['like']);
     try {
-        $req = $db->prepare('SELECT * FROM likes WHERE login = :id');
-        $res = $req->execute(array('id' => $id));
+        $req = $db->prepare('SELECT * FROM likes WHERE login = :id AND id_picture = :pid');
+        $res = $req->execute(array('id' => $id, 'pid' => $pid));
         $res = $req->fetchAll();
     }
     catch (PDOexception $e)
@@ -18,8 +18,8 @@ if (isset($_POST['like']) && isset($_SESSION['login'])) {
     }
     if (count($res) !== 0) {
         try {
-            $req = $db->prepare('DELETE FROM likes WHERE login = :id');
-            $res = $req->execute(array('id' => $id));
+            $req = $db->prepare('DELETE FROM likes WHERE login = :id AND id_picture = :pid');
+            $res = $req->execute(array('id' => $id, 'pid' => $pid));
         }
         catch (PDOexception $e)
         {
@@ -95,7 +95,8 @@ if (isset($_POST['comment']) && isset($_POST['id'])) {
             }
             $mail = $_SESSION['email'];
             $login = $_SESSION['login'];
-            send_email($mail, $login, $link);
+            if ($_SESSION['notif'] === '1')
+                send_email($mail, $login, $link);
             $return['user'] = $_SESSION['login'];
             $return['com'] = $com;
             $return['nb'] = count($req_pic);

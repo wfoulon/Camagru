@@ -1,4 +1,5 @@
 <?php
+include "config/setup.php";
 include "script/security.php";
 ?>
 
@@ -40,6 +41,10 @@ include "script/security.php";
                             <div class="delete">
                                 <a href="delete_account.php"><img src="img/garbage.png" alt="garbage"/><p>Delete your account</p></a>
                             </div>
+                            <?php
+                            ?>
+                                <input id='spam' type="checkbox" name="spam" <?php if ($_SESSION['notif'] === '1') {echo 'checked';} ?> value="no spam"  class="button"/>
+                                <p>Disable Notifications</p>
                         </div>
                     </div>
                 </div>
@@ -52,4 +57,5 @@ include "script/security.php";
             </footer>
         </div>
     </body>
+    <script type="text/javascript" src="js/function.js"></script>
 </html>

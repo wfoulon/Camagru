@@ -34,6 +34,7 @@ if (isset($_POST['connect']) == "signin")
             $_SESSION['login'] = $user_info['login'];
             $_SESSION['email'] = $user_info['email'];
             $_SESSION['password'] = $mdp1;
+            $_SESSION['notif'] = $user_info['notif'];
             echo '<script language="javascript">
                 document.location.href="main_page.php";
                 </script>';
@@ -90,7 +91,7 @@ if (isset($_POST['inscription']) == "signup")
                                     {
                                         try
                                         {
-                                            $insert_users = $db->prepare("INSERT INTO users(login, email, password, confirmation, token) VALUES(?, ?, ?, 0, ?)");
+                                            $insert_users = $db->prepare("INSERT INTO users(login, email, password, confirmation, token, notif) VALUES(?, ?, ?, 0, ?, '1')");
                                             $insert_users = $insert_users->execute(array($login, $email, $mdp, $token));
                                             send_email($email, $login, $token);
                                             $ret = "Your account has been created, check your email to confirm it!";
