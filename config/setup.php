@@ -38,8 +38,6 @@ catch(PDOException $e){
                                 `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
                                 `login` VARCHAR(255) NOT NULL,
                                 `creation_date` DATETIME,
-                                `nb_likes` INT UNSIGNED DEFAULT 0,
-                                `nb_comments` INT UNSIGNED DEFAULT 0,
                                 `link` VARCHAR(255) CHARACTER SET latin1 NOT NULL,
                                 `name` VARCHAR(255) CHARACTER SET latin1 NOT NULL,
                                 PRIMARY KEY(`id`)
