@@ -14,7 +14,6 @@ if (!$req_info)
 {
     $ret = "There is no pictures yet";
 }
-
 else{
     foreach($req_info as $key => $value)
     {
@@ -27,8 +26,7 @@ else{
         {
             print "ERROR! The mistake comes from: ".$e->getMessage()."";
             die();
-        }
-        
+        }        
         $link = explode('/', $value['link'])[2];
         try {
             $req = $db->prepare('SELECT * FROM likes WHERE id_picture = :id');

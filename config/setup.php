@@ -76,10 +76,10 @@ catch(PDOException $e){
 
         try{
             $req = $db->query("INSERT INTO `users` (`id`, `login`, `email`, `password`, `confirmation`, `token`, `notif`) VALUES
-            (1, 'wfoulon', 'wfoulon@student.42.fr', '3ea96d2f377f3e1af344eeda0e6d65a47a4959034e3e9e79ad2b1e9b27739e87847004f284505721170b9526dec31208c600c9c234e246b777ab28c33cb6f69d', 1, '5e4450165df6540c58124ff5088515b7e0aae341'),
-            (2, 'llonger', 'llonger@hotmail.com', '7a39afbf5124c00aa63cb619bc23bbd76018d80ddebab307a2689e7cca53b09327e0eb680e1968480f4b07307e5aa1d6012e1e7b5fc3eced56179836b8609764', 1, '62951522dbaaefa19b27f9242a774f2645a7017c'),
-            (3, 'lsauvage', 'savage@gmail.com', '593f76fb7dcd54473b58da72ff03057080e3f0ad46039e6a2484f14de1367abdb72503c79f2cdef81672c79640551eb094ade1a995395402933d4ee6967ed476', 1, 'd36a0f8f4eee85dba52371680eb21651299ff66a'),
-            (4, 'flgazeau', 'gazgaz@gmail.com', '593f76fb7dcd54473b58da72ff03057080e3f0ad46039e6a2484f14de1367abdb72503c79f2cdef81672c79640551eb094ade1a995395402933d4ee6967ed476', 1, 'd36a0f8f4eee85dba52371680eb21651299ff66a');");
+            (1, 'wfoulon', 'wfoulon@student.42.fr', '3ea96d2f377f3e1af344eeda0e6d65a47a4959034e3e9e79ad2b1e9b27739e87847004f284505721170b9526dec31208c600c9c234e246b777ab28c33cb6f69d', 1, '5e4450165df6540c58124ff5088515b7e0aae341', '1'),
+            (2, 'llonger', 'llonger@hotmail.com', '7a39afbf5124c00aa63cb619bc23bbd76018d80ddebab307a2689e7cca53b09327e0eb680e1968480f4b07307e5aa1d6012e1e7b5fc3eced56179836b8609764', 1, '62951522dbaaefa19b27f9242a774f2645a7017c', '1'),
+            (3, 'lsauvage', 'savage@gmail.com', '593f76fb7dcd54473b58da72ff03057080e3f0ad46039e6a2484f14de1367abdb72503c79f2cdef81672c79640551eb094ade1a995395402933d4ee6967ed476', 1, 'd36a0f8f4eee85dba52371680eb21651299ff66a', '1'),
+            (4, 'flgazeau', 'gazgaz@gmail.com', '593f76fb7dcd54473b58da72ff03057080e3f0ad46039e6a2484f14de1367abdb72503c79f2cdef81672c79640551eb094ade1a995395402933d4ee6967ed476', 1, 'd36a0f8f4eee85dba52371680eb21651299ff66a', '1');");
         }
         catch(PDOException $e){
             print "ERROR1".$e;
@@ -102,13 +102,13 @@ catch(PDOException $e){
          try{
             $req = $db->query("INSERT INTO `comments` (`id`, `login`, `id_picture`, `text`, `creation_date`) VALUES
             (1, '1', 1, 'Hello World', '2018-06-14 13:25:17'),
-            (2, '2', 2, 'Hello World', '2018-06-11 14:25:17'),
-            (3, '3', 3, 'Hello World', '2018-06-12 15:25:17'),
-            (4, '4', 4, 'Hello World', '2018-06-10 16:25:17'),
-            (5, '2', 5, 'Hello World', '2018-06-11 17:25:17'),
-            (6, '1', 6, 'Hello World', '2018-06-13 18:25:17'),
-            (7, '4', 7, 'Hello World', '2018-06-15 19:25:17'),
-            (8, '3', 7, 'Hello World', '2018-06-09 20:25:17');");
+            (2, '2', 2, 'Hi men', '2018-06-11 14:25:17'),
+            (3, '3', 3, 'Wonderful', '2018-06-12 15:25:17'),
+            (4, '4', 4, 'Amazing', '2018-06-10 16:25:17'),
+            (5, '2', 5, 'Extraordinary', '2018-06-11 17:25:17'),
+            (6, '1', 6, 'Super', '2018-06-13 18:25:17'),
+            (7, '4', 7, 'This is spectacular', '2018-06-15 19:25:17'),
+            (8, '3', 7, 'WTF', '2018-06-09 20:25:17');");
         }
         catch(PDOException $e){
             print "ERROR3".$e;
