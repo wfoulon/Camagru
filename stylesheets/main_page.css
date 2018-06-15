@@ -65,6 +65,7 @@ body {
 .site-content {
     position: relative;
     top: 170;
+    margin-bottom: 85px;
 }
 
 .footer{

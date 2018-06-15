@@ -127,8 +127,4 @@ catch(PDOException $e){
             print "ERROR4".$e;
         }
     }
-    
-
-
-
 ?>

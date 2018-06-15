@@ -1,6 +1,9 @@
 <?php
 session_start();
 include "config/setup.php";
+
+if (!isset($_GET['page']))
+    $_GET['page'] = 1;
 ?>
 
 <html>
@@ -42,6 +45,12 @@ include "config/setup.php";
                     ?>
                 </div>
             </div>
+            <footer class="footer">
+                <div class="copyright">
+                    Copyright © 2018 - Tous droits réservés.
+                    Contact: wfoulon@student.42.fr
+                </div>
+            </footer>
         </div>
     </body>
 </html>

@@ -10,6 +10,7 @@ catch (PDOexception $e)
     print "ERROR! The mistake comes from: ".$e->getMessage()."";
     die();
 }
+$i = count($req_info);
 if (!$req_info)
 {
     $ret = "There is no pictures yet";
