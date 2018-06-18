@@ -57,5 +57,5 @@ include "script/security.php";
             </footer>
         </div>
     </body>
-    <script type="text/javascript" src="js/function.js"></script>
+    <script type="text/javascript" src="js/spam.js"></script>
 </html>

@@ -10,7 +10,6 @@ catch (PDOexception $e)
     print "ERROR! The mistake comes from: ".$e->getMessage()."";
     die();
 }
-$i = count($req_info);
 if (!$req_info)
 {
     $ret = "There is no pictures yet";
@@ -47,15 +46,15 @@ else{
             die('Error:' . $e);
         }
         $nbcom = count($res);
-        echo '<div class="display"><img src="pictures/'.$link.'"/>';
-        echo '<a href="likes_comments.php?picture='.$link.'"><div class="namepic">'.$value['name'].'</div></a>';
-        echo '<div class="pb">Posted by: '.$login_info[0]['login'].'</div>';
-        echo '<div class="time"> Uploaded on: '.$value['creation_date'].'</div>';
-        echo '<div class="icn">';
-        echo '<div class="num"><i class="test1 fas fa-comments fa-2x"></i>'.$nbcom.'</div>';
-        echo '<div class="num"><i class="test fas fa-heart fa-2x"></i>'.$nb.'</div>';
-        echo '</div>';
-        echo '</div>';
+            echo '<div class="display"><img src="pictures/'.$link.'"/>';
+            echo '<a href="likes_comments.php?picture='.$link.'"><div class="namepic">'.$value['name'].'</div></a>';
+            echo '<div class="pb">Posted by: '.$login_info[0]['login'].'</div>';
+            echo '<div class="time"> Uploaded on: '.$value['creation_date'].'</div>';
+            echo '<div class="icn">';
+            echo '<div class="num"><i class="test1 fas fa-comments fa-2x"></i>'.$nbcom.'</div>';
+            echo '<div class="num"><i class="test fas fa-heart fa-2x"></i>'.$nb.'</div>';
+            echo '</div>';
+            echo '</div>';
     }
 }
 ?>
